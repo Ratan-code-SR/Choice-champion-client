@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import email from '../../assets/social-logo/email.jpeg'
 
 const Login = () => {
@@ -27,7 +28,7 @@ const Login = () => {
                         <div className='text-center'>
                             <img className="w-auto h-7 sm:h-8 mx-auto" src={email} alt="" />
 
-                            <h1 className="mt-3 text-2xl font-semibold text-gray-800 capitalize sm:text-3xl dark:text-white">sign In</h1>
+                            <p className="mt-3 text-gray-500 dark:text-gray-300">Sign In to access your account</p>
                         </div>
 
                         <div className="relative flex items-center mt-8">
@@ -46,7 +47,6 @@ const Login = () => {
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                                 </svg>
                             </span>
-
                             <input type="password" className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password" />
                         </div>
 
@@ -69,9 +69,9 @@ const Login = () => {
                             </a>
 
                             <div className="mt-6 text-center ">
-                                <a href="#" className="text-sm text-blue-500 hover:underline dark:text-blue-400">
+                                <Link to='/register' className="text-sm text-blue-500 hover:underline dark:text-blue-400">
                                     Don’t have an account yet? Sign up
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </form>
