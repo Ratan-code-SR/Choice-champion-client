@@ -13,7 +13,7 @@ const Navbar = () => {
         {
             user ? <>
                 <li><NavLink to='recommendations_me'>RecommendationsFor Me</NavLink></li>
-                <li><NavLink to='recommendations_me'>My Queries</NavLink></li>
+                <li><NavLink to='/my_queries'>My Queries</NavLink></li>
                 <li><NavLink to='recommendations_me'>My recommendations</NavLink></li>
             </> :
             <></>
@@ -41,8 +41,8 @@ const Navbar = () => {
                 </div>
                 <ToastContainer />
                 <div className='flex items-center'>
-                    <img className='w-10 h-10' src={logo} alt="" />
-                    <a className="text-xl">ChoiceChampion</a>
+                    <img className='lg:w-10 lg:h-10 h-7 w-7' src={logo} alt="" />
+                    <a className="lg:text-xl font-bold text-sm">ChoiceChampion</a>
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex z-10">

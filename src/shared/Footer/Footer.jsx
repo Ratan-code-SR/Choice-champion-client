@@ -11,10 +11,12 @@ const Footer = () => {
         <div className='bg-[#85b581] text-base-content p-10'>
             <footer className="footer  ">
                 <aside>
-                    <img className='w-10 h-10' src={logo} alt="" />
-                    <p>ChoiceChampion Ltd.</p>
+                   <div className='flex items-center gap-1'>
+                   <img className='w-5 h-5' src={logo} alt="" />
+                    <p className='font-bold'>ChoiceChampion</p>
+                   </div>
                     <div className='flex justify-center items-center gap-3'>
-                    <h6 className="">Follow Us-</h6>
+                    <h6 className="font-bold text-xl">Follow Us-</h6>
                         <a href=""><img className='w-5 h-5 rounded-full' src={facebook} alt="" /></a>
                         <a href=""><img className='w-5 h-5 rounded-full' src={youtube} alt="" /></a>
                         <a href=""><img className='w-5 h-5 rounded-full' src={instagram} alt="" /></a>
