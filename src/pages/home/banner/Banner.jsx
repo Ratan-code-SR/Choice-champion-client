@@ -12,7 +12,7 @@ const Banner = () => {
 
             <div div className="hero bg-[#f8f4f5] lg:h-[250px]" >
                 <div className="hero-content flex-col lg:flex-row-reverse lg:h-[250px]">
-                    <img src={product} className="max-w-sm rounded-lg h-full" />
+                    <img src={product} className=" rounded-lg h-full" />
                     <div>
                         <h1 className="text-5xl font-bold">Box Office News!</h1>
                         <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>

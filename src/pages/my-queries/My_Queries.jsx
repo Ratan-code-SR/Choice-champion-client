@@ -31,7 +31,7 @@ const My_Queries = () => {
     }
     return (
         <div className="p-2">
-            <div className="relative font-[sans-serif] before:absolute before:w-full before:h-full before:inset-0 before:bg-black before:opacity-50 before:z-10">
+            <div className="relative z-0 font-[sans-serif] before:absolute before:w-full before:h-full before:inset-0 before:bg-black before:opacity-50 before:z-10">
                 <img src="https://readymadeui.com/cardImg.webp" alt="Banner Image" className="absolute inset-0 w-full h-full object-cover" />
                 <div className="min-h-[300px] relative z-50 h-full max-w-6xl mx-auto flex flex-col justify-center items-center text-center text-white p-6">
                     <h2 className="sm:text-4xl text-2xl font-bold mb-6">Welcome to the Alternative Product Information System</h2>
@@ -48,7 +48,7 @@ const My_Queries = () => {
                 <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 items-center justify-center gap-5">
                     {
                         queriesData.map(data =>
-                            <div className="card card-compact w-96 bg-base-100 shadow-xl">
+                            <div className="card card-compact w-full bg-base-100 shadow-xl">
                                 <figure><img src={data.User_Image} alt="Shoes" /></figure>
                                 <div className="card-body">
                                     <h2 className="card-title">Date: {data.Current_Time}</h2>
