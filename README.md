@@ -12,7 +12,7 @@ Click here for see my website:
 
 
 ## I have implemented this NPM Packages :
-- [React-toastify](https://www.npmjs.com/package/react-toastify)
+- [React-Hot-Toast](https://react-hot-toast.com/)
 - [React-Router](https://reactrouter.com/en/main)
 - [Prop-Types](https://www.npmjs.com/package/prop-types)
 - [React-Icons](https://react-icons.github.io/react-icons/)

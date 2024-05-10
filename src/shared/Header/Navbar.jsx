@@ -1,10 +1,25 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.png'
+import { useContext } from 'react';
+import { AuthContext } from '../../components/provider/ContextProvider';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Navbar = () => {
+    const { user, logOutUser } = useContext(AuthContext)
+    const navigate = useNavigate()
     const navLink = <>
         <li><Link to='/'>Home </Link></li>
         <li><Link>Queries </Link></li>
     </>
+    const handleLogout = () => {
+        logOutUser()
+        .then(result => {
+            toast.success('Logout successful!')
+            navigate("/login")
+           
+        })
+    }
+
     return (
         <div className="navbar bg-[#84b685]">
             <div className="navbar-start">
@@ -16,6 +31,7 @@ const Navbar = () => {
                         {navLink}
                     </ul>
                 </div>
+                <ToastContainer/>
                 <div className='flex items-center'>
                     <img className='w-10 h-10' src={logo} alt="" />
                     <a className="text-xl">ChoiceChampion</a>
@@ -28,7 +44,14 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 {/* <a className="btn btn-primary">LogIn</a> */}
-                <Link to='/login'> <button type="button" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">LogIn</button></Link>
+                {
+                    user ? <>
+                        <button onClick={handleLogout} type="button" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Logout</button>
+                    </> : <>
+                        <Link to='/login'> <button type="button" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Login</button></Link>
+                    </>
+                }
+
             </div>
         </div>
     );
