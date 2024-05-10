@@ -14,17 +14,18 @@ const ContextProvider = ({ children }) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
+      // log in user with google
+      const signInWithGoogle = () => {
+        const provider = new GoogleAuthProvider();
+        setLoading(true)
+        return signInWithPopup(auth, provider)
+    }
+
+    
     // log in user with email and password
     const signInUser = (email, password) => {
         setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
-    }
-
-    // log in user with google
-    const signInWithGoogle = () => {
-        setLoading(true)
-        const provider = new GoogleAuthProvider();
-        return signInWithPopup(auth, provider)
     }
 
 
