@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../components/provider/ContextProvider";
 
 
 const Update = () => {
+    const { loading } = useContext(AuthContext)
     const myAddQueries = useLoaderData()
     // console.log(myAddQueries);
     const {
@@ -11,6 +14,10 @@ const Update = () => {
         Query_Title,
         Boycotting_Reason,
     } = myAddQueries;
+
+    if (loading) {
+        return <div className="w-16 my-20 mx-auto h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+    }
     return (
 
         <div className="font-[sans-serif] text-[#333]">
@@ -72,7 +79,7 @@ const Update = () => {
                                     placeholder="Query Title"
                                     className="bg-gray-100 w-full text-sm px-4 py-3 rounded-md outline-blue-500" />
                             </div>
-                          
+
                             <div>
                                 <label className="text-sm mb-2 block">Boycotting Reason Details</label>
                                 <textarea
@@ -93,6 +100,7 @@ const Update = () => {
                 </form>
             </div>
         </div>
+        
     );
 };
 

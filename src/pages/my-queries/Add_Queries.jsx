@@ -31,7 +31,7 @@ const Add_Queries = () => {
         const recommendationCount = 0;
 
         const queriesInfo = { Product_Image, Query_Title, Product_Name, Brand_Name, Boycotting_Reason, User_Name, User_Image, User_Email, recommendationCount, Current_Date, Current_Time }
-        axios.post(`${import.meta.env.VITE_API_URL}/query` || `${import.meta.env.VITE_API_URL}/query`, queriesInfo)
+        axios.post(`${import.meta.env.VITE_API_URL}/query`, queriesInfo)
             .then(data => {    
                 if (data.data.insertedId) {
                     Swal.fire({

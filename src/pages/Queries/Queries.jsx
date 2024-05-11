@@ -2,6 +2,7 @@
 import axios from "axios";
 import { AuthContext } from "../../components/provider/ContextProvider";
 import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 
 const Queries = () => {
@@ -41,8 +42,8 @@ const Queries = () => {
                             <div className="card-body">
                                 <h2 className="card-title">Date: {data.Current_Time}</h2>
                                 <p>If a dog chews shoes whose shoes does he choose?</p>
-                                <div className="card-actions justify-end">
-                                    <button className="btn btn-primary">Buy Now</button>
+                                <div className="card-actions ">
+                                    <Link to={`/viewDetails/${data._id}`} className="btn btn-primary">Recommend</Link>
                                 </div>
                             </div>
                         </div>

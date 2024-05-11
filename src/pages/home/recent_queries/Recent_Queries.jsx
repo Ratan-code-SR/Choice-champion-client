@@ -9,7 +9,7 @@ const Recent_Queries = () => {
     const URL = `${import.meta.env.VITE_API_URL}/query`
     // console.log(URL);
     useEffect(() => {
-        axios.get(`${import.meta.env.VITE_API_LOCAL}/query`)
+        axios.get(`${import.meta.env.VITE_API_URL}/query`)
             .then(res => {
                 setQueriesData(res.data)
             })

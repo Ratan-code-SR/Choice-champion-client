@@ -8,10 +8,11 @@ const My_Queries = () => {
     const [queriesData, setQueriesData] = useState([])
     const { loading, user } = useContext(AuthContext)
     // console.log(user?.email);
+
     const URL = `${import.meta.env.VITE_API_URL}/query/${user?.email}`
     // console.log(URL);
     useEffect(() => {
-        axios.get(`${import.meta.env.VITE_API_LOCAL}/query/${user?.email}`)
+        axios.get(`${import.meta.env.VITE_API_URL}/query/${user?.email}`)
             .then(res => {
                 setQueriesData(res.data)
             })
