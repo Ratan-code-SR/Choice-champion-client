@@ -14,14 +14,14 @@ const ContextProvider = ({ children }) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
-      // log in user with google
-      const signInWithGoogle = () => {
+    // log in user with google
+    const signInWithGoogle = () => {
         const provider = new GoogleAuthProvider();
         setLoading(true)
         return signInWithPopup(auth, provider)
     }
 
-    
+
     // log in user with email and password
     const signInUser = (email, password) => {
         setLoading(true)
@@ -35,24 +35,28 @@ const ContextProvider = ({ children }) => {
         return signOut(auth)
     }
 
-// user profile updated
-const  updateUserProfile = (name,photo)=>{
-    return updateProfile(auth.currentUser, {
-        displayName: name, photoURL: photo
-      })
-}
+    // user profile updated
+    const updateUserProfile = (name, photo) => {
+        return updateProfile(auth.currentUser, {
+            displayName: name, photoURL: photo
+        })
+    }
 
     // user authentication state observer
     useEffect(() => {
-        const unsubscribed = onAuthStateChanged(auth, (currentUser) => {
-            setLoading(false)
+        const unsubscribe = onAuthStateChanged(auth,currentUser => {
             setUser(currentUser)
+            setLoading(false)
         })
-        return () => unsubscribed()
-    },[user])
+        return () => {
+            return unsubscribe()
+          }
+    }, [user])
+
+
     console.log(user);
 
-    const authInfoData = { loading, signUpUser, signInUser, signInWithGoogle, logOutUser,user,setUser,updateUserProfile }
+    const authInfoData = { setLoading,loading, signUpUser, signInUser, signInWithGoogle, logOutUser, user, setUser, updateUserProfile }
     return (
         <AuthContext.Provider value={authInfoData}>
             {children}

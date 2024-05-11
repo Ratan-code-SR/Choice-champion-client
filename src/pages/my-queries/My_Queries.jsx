@@ -2,33 +2,45 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../components/provider/ContextProvider";
 import axios from "axios";
+import My_Query from "./My_Query";
 
 const My_Queries = () => {
     const [queriesData, setQueriesData] = useState([])
-    const { loading } = useContext(AuthContext)
-    const URL = `${import.meta.env.VITE_API_URL}/query`
+    const { loading, user } = useContext(AuthContext)
+    console.log(user?.email);
+    const URL = `${import.meta.env.VITE_API_URL}/query/email/${user?.email}`
+    // console.log(URL);
     useEffect(() => {
-        axios.get(URL)
+        // setLoading(true)
+        axios.get(`${import.meta.env.VITE_API_LOCAL}/query/email/${user?.email}`)
             .then(res => {
                 setQueriesData(res.data)
             })
+
     }, [URL])
 
-    queriesData.sort((a, b) => {
-        const [aHours, aMinutes, aSeconds] = a.Current_Time.split(':').map(Number);
-        const [bHours, bMinutes, bSeconds] = b.Current_Time.split(':').map(Number);
-        if (aHours !== bHours) {
-            return bHours - aHours;
-        } else if (aMinutes !== bMinutes) {
-            return bMinutes - aMinutes;
-        } else {
-            return bSeconds - aSeconds;
-        }
-    })
-
+    console.log(queriesData);
     if (loading) {
         return <div className="w-16 my-20 mx-auto h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
     }
+
+    queriesData.sort((a, b) => {
+        const dateCompare = new Date(b.Current_Date) - new Date(a.Current_Date)
+        if (dateCompare === 0) {
+            const [aHours, aMinutes, aSeconds] = a.Current_Time.split(':').map(Number);
+            const [bHours, bMinutes, bSeconds] = b.Current_Time.split(':').map(Number);
+            if (aHours !== bHours) {
+                return bHours - aHours;
+            } else if (aMinutes !== bMinutes) {
+                return bMinutes - aMinutes;
+            } else {
+                return bSeconds - aSeconds;
+            }
+        }
+        return dateCompare
+
+    })
+
     return (
         <div className="p-2">
             <div className="relative z-0 font-[sans-serif] before:absolute before:w-full before:h-full before:inset-0 before:bg-black before:opacity-50 before:z-10">
@@ -45,22 +57,27 @@ const My_Queries = () => {
             {/* My Queries */}
             <section>
                 <h1 className="text-center text-3xl font-bold my-5">My Queries</h1>
-                <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 items-center justify-center gap-5">
-                    {
-                        queriesData.map(data =>
-                            <div className="card card-compact w-full bg-base-100 shadow-xl">
-                                <figure><img src={data.User_Image} alt="Shoes" /></figure>
-                                <div className="card-body">
-                                    <h2 className="card-title">Date: {data.Current_Time}</h2>
-                                    <p>If a dog chews shoes whose shoes does he choose?</p>
-                                    <div className="card-actions justify-end">
-                                        <button className="btn btn-primary">Buy Now</button>
-                                    </div>
-                                </div>
+
+                {
+                    queriesData.length > 0 ?
+                        <>
+                            <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 items-center justify-center gap-5">
+                                {queriesData.map(data => <My_Query key={data._id} data={data} />)}
+
                             </div>
-                        )
-                    }
-                </div>
+                        </>
+                        :
+                        <div className="text-center flex-col my-10 flex justify-center items-center">
+                            <h1 className="text-center">You don't add query</h1>
+                            <p>If you add any query please click add query button</p>
+                            <div className="!mt-5">
+                                <Link to='/add-queries' className="min-w-[150px] py-3 px-4 text-sm font-semibold rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none">
+                                    Add Query
+                                </Link>
+                            </div>
+
+                        </div>
+                }
 
             </section>
         </div>
