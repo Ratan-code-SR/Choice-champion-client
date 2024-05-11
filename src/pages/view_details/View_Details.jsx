@@ -1,6 +1,9 @@
 import { useContext } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import { AuthContext } from "../../components/provider/ContextProvider";
+import axios from "axios";
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 
 
 const View_Details = () => {
@@ -22,7 +25,6 @@ const View_Details = () => {
         User_Name,
         _id,
         User_Email,
-
     } = query;
 
     const handleRecommend = (e) => {
@@ -40,8 +42,22 @@ const View_Details = () => {
         const query_userName = User_Name;
         const query_userEmail = User_Email;
         const current_date = currentTime;
+        const recommendInfo = { recommend_image, recommend_product, recommend_reason, recommend_title, recommend_userEmail, recommend_userName, query_id, query_title, product_name, query_userName, query_userEmail, current_date }
 
-        console.log({ recommend_image, recommend_product, recommend_reason, recommend_title, recommend_userEmail, recommend_userName, query_id, query_title, product_name, query_userName, query_userEmail, current_date });
+        axios.post(`${import.meta.env.VITE_API_URL}/recommend`, recommendInfo)
+            .then(data => {
+                if (data.data.insertedId) {
+                    Swal.fire({
+                        title: "Added!",
+                        text: "Your data has been added successful.",
+                        icon: "success"
+                    });
+                    //   console.log(data.data);
+                }
+            })
+
+        // console.log(recommendInfo);
+        form.reset()
     }
 
     return (
@@ -98,6 +114,7 @@ const View_Details = () => {
                                         <div>
                                             <label className="text-sm mb-2 block">Recommendation Title</label>
                                             <input
+                                                required
                                                 name="recommend_title"
                                                 type="text"
                                                 placeholder="Recommendation Title"
@@ -106,6 +123,7 @@ const View_Details = () => {
                                         <div>
                                             <label className="text-sm mb-2 block">Recommended product Name</label>
                                             <input
+                                                required
                                                 name="recommend_product"
                                                 type="text"
                                                 placeholder="Recommended product Name"
@@ -114,6 +132,7 @@ const View_Details = () => {
                                         <div>
                                             <label className="text-sm mb-2 block">Recommended Product Image</label>
                                             <input
+                                                required
                                                 name="recommend_image"
                                                 type="text"
                                                 placeholder="Recommended Product Image"
@@ -122,6 +141,7 @@ const View_Details = () => {
                                         <div>
                                             <label className="text-sm mb-2 block">Recommendation reason</label>
                                             <textarea
+                                                required
                                                 name="recommend_reason"
                                                 type="text"
                                                 placeholder="Recommendation reason"
