@@ -11,7 +11,6 @@ const My_Queries = () => {
     const URL = `${import.meta.env.VITE_API_URL}/query/email/${user?.email}`
     // console.log(URL);
     useEffect(() => {
-        // setLoading(true)
         axios.get(`${import.meta.env.VITE_API_LOCAL}/query/email/${user?.email}`)
             .then(res => {
                 setQueriesData(res.data)
@@ -19,7 +18,7 @@ const My_Queries = () => {
 
     }, [URL])
 
-    console.log(queriesData);
+    // console.log(queriesData);
     if (loading) {
         return <div className="w-16 my-20 mx-auto h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
     }
