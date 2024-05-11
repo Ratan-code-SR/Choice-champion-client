@@ -7,7 +7,7 @@ const Recent_Queries = () => {
     const [queriesData, setQueriesData] = useState([])
     const { loading } = useContext(AuthContext)
     const URL = `${import.meta.env.VITE_API_URL}/query`
-    console.log(URL);
+    // console.log(URL);
     useEffect(() => {
         axios.get(`${import.meta.env.VITE_API_LOCAL}/query`)
             .then(res => {

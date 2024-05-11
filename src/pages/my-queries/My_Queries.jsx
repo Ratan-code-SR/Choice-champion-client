@@ -7,11 +7,11 @@ import My_Query from "./My_Query";
 const My_Queries = () => {
     const [queriesData, setQueriesData] = useState([])
     const { loading, user } = useContext(AuthContext)
-    console.log(user?.email);
-    const URL = `${import.meta.env.VITE_API_URL}/query/email/${user?.email}`
+    // console.log(user?.email);
+    const URL = `${import.meta.env.VITE_API_URL}/query/${user?.email}`
     // console.log(URL);
     useEffect(() => {
-        axios.get(`${import.meta.env.VITE_API_LOCAL}/query/email/${user?.email}`)
+        axios.get(`${import.meta.env.VITE_API_LOCAL}/query/${user?.email}`)
             .then(res => {
                 setQueriesData(res.data)
             })
@@ -61,7 +61,7 @@ const My_Queries = () => {
                     queriesData.length > 0 ?
                         <>
                             <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 items-center justify-center gap-5">
-                                {queriesData.map(data => <My_Query key={data._id} data={data} />)}
+                                {queriesData.map(data => <My_Query key={data._id} queries={data} queriesData={queriesData} setQueriesData={setQueriesData} />)}
 
                             </div>
                         </>

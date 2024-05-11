@@ -56,7 +56,7 @@ const ContextProvider = ({ children }) => {
 
     console.log(user);
 
-    const authInfoData = { setLoading,loading, signUpUser, signInUser, signInWithGoogle, logOutUser, user, setUser, updateUserProfile }
+    const authInfoData = { loading, signUpUser, signInUser, signInWithGoogle, logOutUser, user, setUser, updateUserProfile }
     return (
         <AuthContext.Provider value={authInfoData}>
             {children}

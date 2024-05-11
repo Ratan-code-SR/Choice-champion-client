@@ -7,6 +7,8 @@ import Register from '../pages/register/Register.jsx';
 import My_Queries from '../pages/my-queries/My_Queries.jsx';
 import Add_Queries from '../pages/my-queries/Add_Queries.jsx';
 import Queries from '../pages/Queries/Queries.jsx';
+import View_Details from '../pages/view_details/View_Details.jsx';
+import Update from '../pages/update/Update.jsx';
 
 const router = createBrowserRouter([
     {
@@ -37,7 +39,16 @@ const router = createBrowserRouter([
             {
                 path:"/queries",
                 element:<Queries/>,
-                loader:()=> fetch("http://localhost:5000/query")
+            },
+            {
+                path:"/viewDetails/:id",
+                element:<View_Details/>,
+                loader:()=> fetch(`${import.meta.env.VITE_API_URL}/query`)
+            },
+            {
+                path:"/update/:id",
+                element:<Update/>,
+                loader:({params})=> fetch(`${import.meta.env.VITE_API_URL}/query/id/${params.id}`)
             }
 
 
