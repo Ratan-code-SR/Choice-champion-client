@@ -1,14 +1,21 @@
-import { useContext } from 'react';
-
+import { useContext, useEffect } from 'react';
 
 import email from '../../assets/social-logo/email.jpeg'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../components/provider/ContextProvider';
 import { toast } from 'react-toastify';
 
 const Register = () => {
-    const { user, setUser, updateUserProfile,signInWithGoogle, loading, signUpUser, } = useContext(AuthContext)
+    const { user, setUser, updateUserProfile, signInWithGoogle, loading, signUpUser, } = useContext(AuthContext)
+    const location = useLocation()
     const navigate = useNavigate()
+
+    useEffect(() => {
+        if (user) {
+            navigate('/')
+        }
+    }, [user, navigate])
+
     const handleSubmitCreateUser = (e) => {
         e.preventDefault()
         const form = e.target;
@@ -21,9 +28,13 @@ const Register = () => {
             .then(result => {
                 updateUserProfile(name, photo)
                 setUser({ ...user, photoURL: photo, displayName: name })
-                navigate('/')
+                if (result) {
+                    setTimeout(() => {
+                        navigate(location?.state ? location.state : "/")
+                    }, 1000);
+                }
                 toast.success("Register Successful!")
-               
+
             })
             .catch(error => {
                 toast.error(error.message)
@@ -34,13 +45,18 @@ const Register = () => {
     const handleGoogleLogin = () => {
         signInWithGoogle()
             .then(result => {
-                navigate('/')
+                if (result) {
+                    setTimeout(() => {
+                        navigate(location?.state ? location.state : "/")
+                    }, 1000);
+                }
                 toast.success("Google Login successful!")
             })
             .catch(error => {
                 toast.error(error.message)
             })
     }
+    if (user || loading) return
     return (
         <div className="bg-white dark:bg-gray-900 p-5">
             <div className="flex flex-row-reverse rounded-md justify-center min-h-[calc(100vh-306px)]">

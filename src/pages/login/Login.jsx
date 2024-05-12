@@ -1,14 +1,20 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import email from '../../assets/social-logo/email.jpeg'
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { AuthContext } from '../../components/provider/ContextProvider';
 import { toast } from 'react-toastify';
 
 
 const Login = () => {
-    const { signInUser, signInWithGoogle } = useContext(AuthContext)
+    const { signInUser, signInWithGoogle, loading, user } = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
+
+    useEffect(() => {
+        if (user) {
+            navigate('/')
+        }
+    }, [user, navigate])
     const handleLoginSubmit = (e) => {
         e.preventDefault()
         const form = e.target;
@@ -41,6 +47,7 @@ const Login = () => {
                 toast.error(error.message)
             })
     }
+    if(user || loading) return
     return (
         <div className="bg-white dark:bg-gray-900 p-5">
             <div className="flex gap-5 justify-center min-h-[calc(100vh-306px)]  rounded-md">
