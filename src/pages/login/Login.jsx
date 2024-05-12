@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import email from '../../assets/social-logo/email.jpeg'
 import { useContext } from 'react';
 import { AuthContext } from '../../components/provider/ContextProvider';
@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 const Login = () => {
     const { signInUser, signInWithGoogle } = useContext(AuthContext)
     const navigate = useNavigate()
+    const location = useLocation()
     const handleLoginSubmit = (e) => {
         e.preventDefault()
         const form = e.target;
@@ -16,7 +17,11 @@ const Login = () => {
         // console.log({ email, password });
         signInUser(email, password)
             .then(result => {
-                navigate('/')
+                if (result) {
+                    setTimeout(() => {
+                        navigate(location?.state ? location.state : "/")
+                    }, 1000);
+                }
                 toast.success("Login successful!")
             })
             .catch(error => {
@@ -28,7 +33,7 @@ const Login = () => {
     const handleGoogleLogin = () => {
         signInWithGoogle()
             .then(result => {
-                navigate('/')
+                navigate(location?.state ? location.state : "/")
                 toast.success("Google Login successful!")
                 console.log(result);
             })
@@ -118,7 +123,7 @@ const Login = () => {
                             </div>
                         </div>
                     </form>
-                
+
 
                 </div>
 

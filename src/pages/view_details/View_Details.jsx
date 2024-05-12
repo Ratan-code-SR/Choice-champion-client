@@ -19,8 +19,6 @@ const View_Details = () => {
     const currentDate = `${monthName}-${day}-${year}`
     // console.log(currentDate);
 
-
-
     const {
         Product_Image,
         Brand_Name,
@@ -33,6 +31,7 @@ const View_Details = () => {
         User_Name,
         _id,
         User_Email,
+        recommendationCount
     } = query;
 
     const handleRecommend = (e) => {
@@ -97,7 +96,7 @@ const View_Details = () => {
                         </div>
                         <div className="mt-8">
                             <div className="mt-8 flex items-center gap-5">
-                                <h3 className="text-lg font-semibold text-white">Recommend(10)</h3>
+                                <h3 className="text-lg font-semibold text-white">Recommend({recommendationCount})</h3>
                                 <Link to={`/allRecommend/${_id}`} className="text-sm p-1 flex items-center bg-yellow-300">
                                     <span>Show all recommend</span> <span><FaLongArrowAltRight /></span>
                                 </Link>

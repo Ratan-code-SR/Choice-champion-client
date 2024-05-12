@@ -25,9 +25,6 @@ const My_Queries = () => {
         return <div className="w-16 my-20 mx-auto h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
     }
 
-    // if (loading) {
-    //     return <div className="w-16 my-20 mx-auto h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
-    // }
 
     queriesData.sort((a, b) => {
         const dateCompare = new Date(b.Current_Date) - new Date(a.Current_Date)
@@ -52,7 +49,7 @@ const My_Queries = () => {
                 <div className="min-h-[300px] relative z-50 h-full max-w-6xl mx-auto flex flex-col justify-center items-center text-center text-white p-6">
                     <h2 className="sm:text-4xl text-2xl font-bold mb-6">Welcome to the Alternative Product Information System</h2>
                     <p className="text-lg text-center text-gray-200">How are you today?</p>
-                    <Link to="/add-queries"
+                    <Link to="/add_queries"
                         className="mt-8 bg-transparent text-white text-base font-semibold py-2.5 px-6 border-2 border-white rounded hover:bg-white hover:text-black transition duration-300 ease-in-out">
                         Add Queries
                     </Link>
@@ -75,7 +72,7 @@ const My_Queries = () => {
                             <h1 className="text-center">You don't add query</h1>
                             <p>If you add any query please click add query button</p>
                             <div className="!mt-5">
-                                <Link to='/add-queries' className="min-w-[150px] py-3 px-4 text-sm font-semibold rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none">
+                                <Link to='/add_queries' className="min-w-[150px] py-3 px-4 text-sm font-semibold rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none">
                                     Add Query
                                 </Link>
                             </div>

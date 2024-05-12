@@ -1,9 +1,11 @@
 import { useContext } from "react";
-import AuthContext from "../components/provider/ContextProvider"
+import { Navigate, useLocation } from "react-router-dom";
+import { AuthContext } from "../components/provider/ContextProvider";
 
 const PrivateRoute = ({ children }) => {
 
     const { user, loading } = useContext(AuthContext)
+    const location = useLocation()
     if (loading) {
         return <>
             <div className="flex justify-center my-52">
@@ -11,7 +13,7 @@ const PrivateRoute = ({ children }) => {
             </div>
         </>
     }
-    
+
     if (user) {
         return children;
     }
