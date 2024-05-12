@@ -42,7 +42,6 @@ const My_Query = ({ queries, setQueriesData, queriesData }) => {
         });
     }
   
-
     return (
         <div>
             <div className="card card-compact w-full bg-base-100 shadow-xl">

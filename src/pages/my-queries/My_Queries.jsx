@@ -6,23 +6,28 @@ import My_Query from "./My_Query";
 
 const My_Queries = () => {
     const [queriesData, setQueriesData] = useState([])
+    const [dataLoading, setDataLoading] = useState(true)
     const { loading, user } = useContext(AuthContext)
     // console.log(user?.email);
 
-    const URL = `${import.meta.env.VITE_API_URL}/query/${user?.email}`
+   
     // console.log(URL);
     useEffect(() => {
-        axios.get(`${import.meta.env.VITE_API_URL}/query/${user?.email}`)
-            .then(res => {
-                setQueriesData(res.data)
-            })
-
-    }, [URL])
-
-    // console.log(queriesData);
-    if (loading) {
+        if (user) {
+            axios.get(`${import.meta.env.VITE_API_URL}/query/${user?.email}`)
+                .then(res => {
+                    setQueriesData(res.data)
+                    setDataLoading(false)
+                })
+        }
+    }, [user?.email])
+    if (dataLoading) {
         return <div className="w-16 my-20 mx-auto h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
     }
+
+    // if (loading) {
+    //     return <div className="w-16 my-20 mx-auto h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+    // }
 
     queriesData.sort((a, b) => {
         const dateCompare = new Date(b.Current_Date) - new Date(a.Current_Date)
@@ -40,7 +45,6 @@ const My_Queries = () => {
         return dateCompare
 
     })
-
     return (
         <div className="p-2">
             <div className="relative z-0 font-[sans-serif] before:absolute before:w-full before:h-full before:inset-0 before:bg-black before:opacity-50 before:z-10">

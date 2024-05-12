@@ -1,4 +1,5 @@
-
+import { useContext } from "react";
+import AuthContext from "../components/provider/ContextProvider"
 
 const PrivateRoute = ({ children }) => {
 

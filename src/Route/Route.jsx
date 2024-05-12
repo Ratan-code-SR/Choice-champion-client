@@ -9,6 +9,7 @@ import Add_Queries from '../pages/my-queries/Add_Queries.jsx';
 import Queries from '../pages/Queries/Queries.jsx';
 import View_Details from '../pages/view_details/View_Details.jsx';
 import Update from '../pages/update/Update.jsx';
+import All_Recommendation from '../pages/all_recommendation/All_Recommendation.jsx';
 
 const router = createBrowserRouter([
     {
@@ -37,18 +38,23 @@ const router = createBrowserRouter([
                 element: <Add_Queries />
             },
             {
-                path:"/queries",
-                element:<Queries/>,
+                path: "/queries",
+                element: <Queries />,
             },
             {
-                path:"/viewDetails/:id",
-                element:<View_Details/>,
-                loader:()=> fetch(`${import.meta.env.VITE_API_URL}/query`)
+                path: "/viewDetails/:id",
+                element: <View_Details />,
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/query`)
             },
             {
-                path:"/update/:id",
-                element:<Update/>,
-                loader:({params})=> fetch(`${import.meta.env.VITE_API_URL}/query/id/${params.id}`)
+                path: "/update/:id",
+                element: <Update />,
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/query/id/${params.id}`)
+            },
+            {
+                path: "/allRecommend/:id",
+                element: <All_Recommendation />,
+
             }
 
 

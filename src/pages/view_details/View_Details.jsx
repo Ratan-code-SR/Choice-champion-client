@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 import { AuthContext } from "../../components/provider/ContextProvider";
 import axios from "axios";
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
-
+import { FaLongArrowAltRight } from "react-icons/fa";
 
 const View_Details = () => {
     const queries = useLoaderData()
@@ -12,7 +12,15 @@ const View_Details = () => {
     const { user } = useContext(AuthContext)
     const query = queries.find(data => data._id === id)
     // console.log(query);
-    const currentTime = new Date().getTime()
+    const date = new Date()
+    const year = date.getFullYear()
+    const monthName = date.toLocaleString("default", { month: 'long' })
+    const day = date.getDate()
+    const currentDate = `${monthName}-${day}-${year}`
+    // console.log(currentDate);
+
+
+
     const {
         Product_Image,
         Brand_Name,
@@ -41,7 +49,7 @@ const View_Details = () => {
         const product_name = Product_Name;
         const query_userName = User_Name;
         const query_userEmail = User_Email;
-        const current_date = currentTime;
+        const current_date = currentDate;
         const recommendInfo = { recommend_image, recommend_product, recommend_reason, recommend_title, recommend_userEmail, recommend_userName, query_id, query_title, product_name, query_userName, query_userEmail, current_date }
 
         axios.post(`${import.meta.env.VITE_API_URL}/recommend`, recommendInfo)
@@ -88,11 +96,11 @@ const View_Details = () => {
                             </ul>
                         </div>
                         <div className="mt-8">
-                            <div className="mt-8">
+                            <div className="mt-8 flex items-center gap-5">
                                 <h3 className="text-lg font-semibold text-white">Recommend(10)</h3>
-                                <div className="space-y-3 mt-4">
-
-                                </div>
+                                <Link to={`/allRecommend/${_id}`} className="text-sm p-1 flex items-center bg-yellow-300">
+                                    <span>Show all recommend</span> <span><FaLongArrowAltRight /></span>
+                                </Link>
                             </div>
                             <div>
                                 <div className="flex text-white gap-2 items-center">
