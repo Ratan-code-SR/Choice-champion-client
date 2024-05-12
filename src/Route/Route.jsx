@@ -11,6 +11,7 @@ import View_Details from '../pages/view_details/View_Details.jsx';
 import Update from '../pages/update/Update.jsx';
 import All_Recommendation from '../pages/all_recommendation/All_Recommendation.jsx';
 import My_Recommendation from '../pages/my_recommendation/My_Recommendation.jsx';
+import Recommended_Me from '../pages/my_recommendation/Recommended_Me.jsx';
 
 const router = createBrowserRouter([
     {
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
                 path: "/allRecommend/:id",
                 element: <All_Recommendation />,
 
+            },
+            {
+                path:"/recommended_me",
+                element:<Recommended_Me/>
             }
 
 

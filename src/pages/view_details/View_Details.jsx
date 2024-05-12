@@ -42,8 +42,8 @@ const View_Details = () => {
         const recommend_product = form.recommend_product.value;
         const recommend_image = form.recommend_image.value;
         const recommend_reason = form.recommend_reason.value;
-        const recommend_userName = user.displayName;
-        const recommend_userEmail = user.email;
+        const recommend_userName = user?.displayName;
+        const recommend_userEmail = user?.email;
         const query_id = _id;
         const query_title = Query_Title;
         const product_name = Product_Name;

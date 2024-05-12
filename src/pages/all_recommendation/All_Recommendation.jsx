@@ -7,7 +7,7 @@ const All_Recommendation = () => {
     const [recommendData, setRecommendData] = useState([])
     const [loading, setLoading] = useState(true)
     const { id } = useParams()
-    // console.log(recommendData);
+    console.log(recommendData);
     const URL = `${import.meta.env.VITE_API_URL}/recommend/query_id/${id}`
     useEffect(() => {
         axios.get(URL)
@@ -16,6 +16,7 @@ const All_Recommendation = () => {
                 setLoading(false)
             })
     }, [URL])
+
     if (loading) {
         return <div className="w-16 my-20 mx-auto h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
 

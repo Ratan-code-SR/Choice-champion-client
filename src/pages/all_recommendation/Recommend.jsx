@@ -45,7 +45,6 @@ const Recommend = ({ recommend }) => {
                                             <p className="flex justify-center items-center gap-2"> <span><MdOutlineEmail /></span>
                                                 <span>{recommend_userEmail}</span>
                                             </p>
-
                                         </div>
 
                                     </div>
