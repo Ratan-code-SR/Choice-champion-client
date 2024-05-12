@@ -8,7 +8,7 @@ import phone from '../../assets/social-logo/phone.png'
 
 const Footer = () => {
     return (
-        <div className='bg-[#85b581] text-base-content p-10'>
+        <div className='bg-[#85b581] text-base-content p-10 py-20'>
             <footer className="footer  ">
                 <aside>
                    <div className='flex items-center gap-1'>
