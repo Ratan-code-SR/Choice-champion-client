@@ -8,7 +8,7 @@ const All_Recommendation = () => {
     const [loading, setLoading] = useState(true)
     const { id } = useParams()
     // console.log(recommendData);
-    const URL = `${import.meta.env.VITE_API_LOCAL}/recommend/query_id/${id}`
+    const URL = `${import.meta.env.VITE_API_URL}/recommend/query_id/${id}`
     useEffect(() => {
         axios.get(URL)
             .then(res => {
