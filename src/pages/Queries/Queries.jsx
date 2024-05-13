@@ -2,15 +2,28 @@
 import axios from "axios";
 import { AuthContext } from "../../components/provider/ContextProvider";
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-
+import { Link, useLoaderData } from "react-router-dom";
+import { GrLinkNext } from "react-icons/gr";
+import { GrLinkPrevious } from "react-icons/gr";
 
 const Queries = () => {
     const [queriesData, setQueriesData] = useState([])
+    const [itemsPages, setItemsPages] = useState(5)
+    const [currentPage, setCurrentPage] = useState(0)
     const { loading } = useContext(AuthContext)
+    const { count } = useLoaderData()
+    console.log(count);
+    const pagesNumber = Math.ceil(count / itemsPages)
+
+    const pages = []
+    for (let i = 0; i < pagesNumber; i++) {
+        pages.push(i)
+    }
+    // console.log(pages);
+
     const URL = `${import.meta.env.VITE_API_URL}/query`
     useEffect(() => {
-        axios.get(URL)
+        axios.get(URL, { withCredentials: true })
             .then(res => {
                 setQueriesData(res.data)
             })
@@ -30,6 +43,12 @@ const Queries = () => {
 
     if (loading) {
         return <div className="w-16 my-20 mx-auto h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+    }
+    const handleValuePerPageNumber = (e) => {
+        const value = parseInt(e.target.value)
+        setItemsPages(value)
+        setCurrentPage(0)
+
     }
     return (
         <div>
@@ -65,12 +84,38 @@ const Queries = () => {
                     }
                 </div>
             </div>
-            <div className="join">
-                <button className="join-item btn">1</button>
-                <button className="join-item btn">2</button>
-                <button className="join-item btn btn-disabled">...</button>
-                <button className="join-item btn">99</button>
-                <button className="join-item btn">100</button>
+            <div className="flex justify-center gap-2 items-center">
+                <button 
+                 onClick={()=> {
+                    if(currentPage > 0){
+                        setCurrentPage( currentPage - 1)
+                    }
+                }}
+                className=" flex items-center btn"><span><GrLinkPrevious /></span><span>Prev</span></button>
+                {
+                    pages.map((page) =>
+                        <button
+                    className={`${currentPage === page ? 'bg-orange-300': ''} btn`}
+                            onClick={() => setCurrentPage(page)}
+                            key={page}>
+                            {page}
+                        </button>)
+                }
+                <select onChange={handleValuePerPageNumber} className="border-black w-10 h-10" value={itemsPages} name="" id="">
+
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                </select>
+                <button 
+                onClick={()=> {
+                    if(currentPage < pages.length -1){
+                       setCurrentPage( currentPage + 1)
+                    }
+                }}
+                
+                className=" flex items-center btn"><span>Next </span><span><GrLinkNext /></span></button>
             </div>
         </div>
 

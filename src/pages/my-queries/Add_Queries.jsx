@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { AuthContext } from "../../components/provider/ContextProvider";
-import axios from "axios";
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 const Add_Queries = () => {
+    const axiosSecure = useAxiosSecure()
     const { user } = useContext(AuthContext)
     const currentDate = new Date()
     const day = currentDate.getDate()
@@ -31,7 +32,7 @@ const Add_Queries = () => {
         const recommendationCount = 0;
 
         const queriesInfo = { Product_Image, Query_Title, Product_Name, Brand_Name, Boycotting_Reason, User_Name, User_Image, User_Email, recommendationCount, Current_Date, Current_Time }
-        axios.post(`${import.meta.env.VITE_API_URL}/query`, queriesInfo)
+        axiosSecure.post(`/query`, queriesInfo)
             .then(data => {    
                 if (data.data.insertedId) {
                     Swal.fire({

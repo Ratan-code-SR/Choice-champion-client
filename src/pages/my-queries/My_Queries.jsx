@@ -1,30 +1,30 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../components/provider/ContextProvider";
-import axios from "axios";
 import My_Query from "./My_Query";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const My_Queries = () => {
     const [queriesData, setQueriesData] = useState([])
+    const axiosSecure = useAxiosSecure()
     const [dataLoading, setDataLoading] = useState(true)
-    const { loading, user } = useContext(AuthContext)
-    // console.log(user?.email);
+    const { user } = useContext(AuthContext)
 
-   
-    // console.log(URL);
+    const url = `/query/${user?.email}`
     useEffect(() => {
         if (user) {
-            axios.get(`${import.meta.env.VITE_API_URL}/query/${user?.email}`)
+
+            axiosSecure.get(url)
                 .then(res => {
                     setQueriesData(res.data)
                     setDataLoading(false)
                 })
         }
-    }, [user?.email])
-    if (dataLoading) {
-        return <div className="w-16 my-20 mx-auto h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
-    }
 
+    }, [url, axiosSecure])
+    if (dataLoading) {
+        return <div className="w-16 my-56 mx-auto h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+    }
 
     queriesData.sort((a, b) => {
         const dateCompare = new Date(b.Current_Date) - new Date(a.Current_Date)
