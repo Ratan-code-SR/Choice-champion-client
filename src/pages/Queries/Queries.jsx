@@ -20,6 +20,14 @@ const Queries = () => {
         pages.push(i)
     }
     // console.log(pages);
+    useEffect(()=>{
+        fetch(`${import.meta.env.VITE_API_URL}/query?page=${currentPage}&size=${pagesNumber}`)
+        .then(res => res.json())
+        .then(data => {
+            setQueriesData(data)
+            console.log(data);
+        })
+    },[currentPage,itemsPages])
 
     const URL = `${import.meta.env.VITE_API_URL}/query`
     useEffect(() => {
