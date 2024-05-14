@@ -62,7 +62,7 @@ const My_Queries = () => {
                 {
                     queriesData.length > 0 ?
                         <>
-                            <div className="grid lg:grid-cols-2 sm:grid-cols-2 grid-cols-1 items-center justify-center gap-5">
+                            <div className="grid lg:grid-cols-2 grid-cols-1 items-center justify-center gap-5">
                                 {queriesData.map(data => <My_Query key={data._id} queries={data} queriesData={queriesData} setQueriesData={setQueriesData} />)}
 
                             </div>

@@ -25,7 +25,7 @@ const Queries = () => {
             setQueriesData(data)
         }
         getQueryData()
-    }, [currentPage, itemsPages,search])
+    }, [currentPage, itemsPages, search])
 
     useEffect(() => {
         const getCount = async () => {
@@ -83,37 +83,59 @@ const Queries = () => {
                 </div>
             </div>
 
-            <div className="p-2">
-                <h1 className="text-center font-bold text-3xl my-5">All Queries</h1>
-                <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 items-center justify-center gap-5">
+            <div className="my-5">
+                <div className="flex flex-col justify-center items-center gap-2 lg:w-2/3 mx-auto mb-2 w-11/12">
+                    <h1 className="text-center font-bold text-3xl ">View All Queries</h1>
+                    <p className="text-center text-sm font-semibold">All Queries is a section of the website dedicated to displaying user-generated inquiries regarding alternative products. Users can browse through these queries to discover alternative options to mainstream products, fostering a community-driven platform for exploring sustainable and ethical consumption choices.</p>
+                </div>
+                <hr />
+                <div className="grid lg:grid-cols-2 sm:grid-cols-2 grid-cols-1 items-center justify-center gap-5">
                     {
                         queriesData.map(data =>
-                            <div key={data._id} className="card card-compact w-full bg-base-100 shadow-xl">
-                                <figure><img src={data.User_Image} alt="Shoes" /></figure>
-                                <div className="card-body">
-                                    <h2 className="card-title">Date: {data.Current_Time}</h2>
-                                    <p>If a dog chews shoes whose shoes does he choose?</p>
-                                    <div className="card-actions ">
-                                        <Link to={`/viewDetails/${data._id}`} className="btn btn-primary">Recommend</Link>
+                            <>
+                                <div className="bg-white grid lg:grid-cols-2 items-center shadow-[0_2px_18px_-6px_rgba(0,0,0,0.2)] w-full max-w-xl rounded-lg font-sans overflow-hidden mx-auto mt-4">
+                                    <img src={data.Product_Image} className="w-full lg:h-full h-[250px]" />
+                                    <div className="px-4 py-6">
+                                        <h3 className="text-md font-semibold text-[#10b981] ">{data.Product_Name}</h3>
+                                        <h3 className="text-md  text-[#a91079] ">{data.Brand_Name}</h3>
+                                        <h3 className="text-sm">{data.Query_Title}</h3>
+
+                                        <p title={data.Boycotting_Reason} className="mt-2 text-sm text-gray-400">{data.Boycotting_Reason.slice(0, 80)}...</p>
+
+                                        <div className="flex flex-wrap items-center cursor-pointer border rounded-lg w-full px-4 py-2 mt-6">
+                                            <img src={data.User_Image} className="w-9 h-9 rounded-full" />
+                                            <div className="ml-4 flex-1">
+                                                <p className="text-sm text-black font-semibold">{data.User_Name}</p>
+                                                <p className="text-[10px] text-gray-400">{data.User_Email}</p>
+                                                <p className="text-[10px] text-gray-400">{data.Current_Date}</p>
+                                            </div>
+
+                                            <h1 className="text-[#10b981] font-bold">Recommended ( <span className="text-black">{data.recommendationCount}</span> )</h1>
+                                        </div>
+                                        <Link to={`/viewDetails/${data._id}`}>
+                                            <button className="btn btn-secondary mt-2 w-full">Add Recommendation</button>
+                                        </Link>
+
                                     </div>
                                 </div>
-                            </div>
+                            </>
+
                         )
                     }
                 </div>
             </div>
-            <div className="flex justify-center gap-2 items-center">
+            <div className="flex justify-center gap-2 items-center my-5">
                 <button
                     onClick={() => {
                         if (currentPage > 1) {
                             setCurrentPage(currentPage - 1)
                         }
                     }}
-                    className=" flex items-center btn"><span><GrLinkPrevious /></span><span>Prev</span></button>
+                    className=" lg:flex items-center btn md:block sm:block hidden"><span><GrLinkPrevious /></span><span>Prev</span></button>
                 {
                     pages.map((page) =>
                         <button
-                            className={`${currentPage === page ? 'bg-orange-300' : ''} btn`}
+                            className={`${currentPage == page ? 'bg-orange-300' : ''} btn`}
                             onClick={() => setCurrentPage(page)}
                             key={page}>
                             {page}
@@ -133,7 +155,7 @@ const Queries = () => {
                         }
                     }}
 
-                    className=" flex items-center btn"><span>Next </span><span><GrLinkNext /></span></button>
+                    className=" lg:flex items-center btn md:block sm:block hidden"><span>Next </span><span><GrLinkNext /></span></button>
             </div>
         </div>
 

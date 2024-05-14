@@ -53,7 +53,7 @@ const My_Query = ({ queries, setQueriesData, queriesData }) => {
                     <p title={Boycotting_Reason} className="text-sm mt-4">{Boycotting_Reason.slice(0, 100)}...</p>
                     <button onClick={() => handleDelete(queries._id)} className="text-4xl font-bold absolute top-0 right-0 text-red-500"><TiDeleteOutline /></button>
                     <Link to={`/update/${_id}`}>
-                        <button className="text-3xl font-bold absolute top-1/4 right-0 text-green-500"><FiEdit /></button>
+                        <button className="text-3xl font-bold absolute lg:top-1/4 top-[10%] right-0 text-green-500"><FiEdit /></button>
                     </Link>
 
                     <Link to={`/viewDetails/${_id}`}>

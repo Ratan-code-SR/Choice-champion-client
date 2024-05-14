@@ -5,9 +5,9 @@ import product from '../../../assets/banner/banner.jpg'
 const Banner = () => {
     return (
         <div>
-            <div className='w-2/3 mx-auto'>
-                <h1 className='text-center text-xl font-bold py-1'>Lorem ipsum dolor sit, amet</h1>
-                <p className='text-center py-1'>Lorem ipsum dolor sit, amet consectetur adipisicing elit.Lorem ipsum dolor sit, amet consectetur adipisicing elit  amet consectetur adipisicing elit</p>
+            <div className='lg:w-1/2 w-10/12 mx-auto my-2'>
+                <h1 className='text-center text-3xl font-bold py-1 text-[#10b981]'>See All Queries</h1>
+                <p className='text-center py-1'>See All Queries allows users to access a comprehensive list of all submitted inquiries, facilitating thorough exploration of alternative product options.</p>
 
             </div>
             <div className="relative z-0 font-[sans-serif] before:absolute before:w-full before:h-full before:inset-0 before:bg-black before:opacity-50 before:z-10">
