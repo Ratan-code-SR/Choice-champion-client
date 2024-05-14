@@ -41,8 +41,8 @@ const Recent_Queries = () => {
         <div>
          
             <div className="flex flex-col justify-center items-center gap-2 mx-auto">
-                <h1 className="text-center lg:text-4xl text-3xl font-semibold text-[#10b981]">Explore recent Queries</h1>
-                <p className="lg:w-2/3 w-11/12 text-center text-sm mb-5">Recent Queries presents users with the most recent inquiries, offering insights into trending consumer interests and facilitating exploration of sustainable and ethical product alternatives. This section enables users to stay informed about emerging topics and discover new options aligned with their values.</p>
+                <h1 className="text-center lg:text-4xl text-3xl font-semibold text-[#10b981] my-5">Explore recent Queries</h1>
+                
             </div>
             <div className="grid lg:grid-cols-2  md:grid-cols-2 grid-cols-1 items-center justify-center gap-5">
                 {
