@@ -6,11 +6,11 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Slide from './Slide';
-import slide1 from '../../../assets/slideer-image/slide1.jpg'
-import slide2 from '../../../assets/slideer-image/slide2.jpg'
-import slide3 from '../../../assets/slideer-image/slide3.png'
-import slide4 from '../../../assets/slideer-image/slide4.webp'
-import slide5 from '../../../assets/slideer-image/slide5.jpg'
+import slide1 from '../../../assets/slideer-image/slider1.jpg'
+import slide2 from '../../../assets/slideer-image/slider2.webp'
+import slide3 from '../../../assets/slideer-image/slider3.jpeg'
+import slide4 from '../../../assets/slideer-image/slider4.jpeg'
+import slide5 from '../../../assets/slideer-image/slider5.jpg'
 
 const Slider = () => {
     return (
@@ -30,25 +30,25 @@ const Slider = () => {
                 className="mySwiper"
             >
                 <SwiperSlide>
-                    <Slide image={slide1} text="hello" />
+                    <Slide image={slide1}  />
 
                 </SwiperSlide>
                 <SwiperSlide>
-                    <Slide image={slide2} text="hello" />
+                    <Slide image={slide2}  />
 
                 </SwiperSlide>
                 <SwiperSlide>
-                    <Slide image={slide3} text="hello" />
-
-                </SwiperSlide>
-              
-                <SwiperSlide>
-                    <Slide image={slide4} text="hello" />
+                    <Slide image={slide3}  />
 
                 </SwiperSlide>
               
                 <SwiperSlide>
-                    <Slide image={slide5} text="hello" />
+                    <Slide image={slide4} />
+
+                </SwiperSlide>
+              
+                <SwiperSlide>
+                    <Slide image={slide5} />
                 </SwiperSlide>
               
 
