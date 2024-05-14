@@ -83,12 +83,12 @@ const Update_Queries = () => {
     }
     return (
 
-        <div className="font-[sans-serif] text-[#333]">
+        <div className="font-[sans-serif] ">
             <div className="text-center bg-gradient-to-r from-blue-800 to-blue-400 min-h-[160px] sm:p-6 p-4">
                 <h4 className="sm:text-3xl text-2xl font-bold text-white">Update your Queries</h4>
             </div>
             <div className="mx-4 mb-4 -mt-16">
-                <form onSubmit={handleQueryDateEdit} className="max-w-4xl mx-auto bg-white shadow-[0_2px_18px_-3px_rgba(6,81,237,0.4)] sm:p-8 p-4 rounded-md">
+                <form onSubmit={handleQueryDateEdit} className="max-w-4xl mx-auto  shadow-[0_2px_18px_-3px_rgba(6,81,237,0.4)] sm:p-8 p-4 rounded-md">
                     <div
                         className="my-7 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
                         <p
@@ -98,12 +98,12 @@ const Update_Queries = () => {
                     </div>
                     <div className="grid md:grid-cols-2 gap-y-7 gap-x-12">
                         <div>
-                            <div className="card w-full bg-base-100 shadow-xl">
+                            <div className="card w-full  shadow-xl">
                                 <figure><img className="w-full h-[200px]" src={updatedQueries.Product_Image} alt="Product" /></figure>
                                 <div className="card-body">
-                                    <h1>Product Name:{updatedQueries.Product_Name}</h1>
-                                    <h1>Brand Name:{updatedQueries.Brand_Name}</h1>
-                                    <h1>Query Title:{updatedQueries.Query_Title}</h1>
+                                    <h1 className="text-sm text-[#305bc3] font-semibold">Product Name: {updatedQueries.Product_Name}</h1>
+                                    <h1 className="text-sm text-[#305bc3] font-semibold">Brand Name: {updatedQueries.Brand_Name}</h1>
+                                    <h1 className="text-sm text-[#305bc3] font-semibold">Query Title: {updatedQueries.Query_Title}</h1>
                                 </div>
                             </div>
                         </div>
@@ -115,7 +115,7 @@ const Update_Queries = () => {
                                     type="text"
                                     defaultValue={Product_Image}
                                     placeholder="Product Image"
-                                    className="bg-gray-100 w-full text-sm px-4 py-3 rounded-md outline-blue-500" />
+                                    className="bg-gray-100 text-black w-full text-sm px-4 py-3 rounded-md outline-blue-500" />
                             </div>
                             <div>
                                 <label className="text-sm mb-2 block">Product Name</label>
@@ -124,7 +124,7 @@ const Update_Queries = () => {
                                     type="text"
                                     defaultValue={Product_Name}
                                     placeholder="Product Name"
-                                    className="bg-gray-100 w-full text-sm px-4 py-3 rounded-md outline-blue-500" />
+                                    className="bg-gray-100 text-black w-full text-sm px-4 py-3 rounded-md outline-blue-500" />
                             </div>
                             <div>
                                 <label className="text-sm mb-2 block">Brand Name</label>
@@ -133,7 +133,7 @@ const Update_Queries = () => {
                                     type="text"
                                     defaultValue={Brand_Name}
                                     placeholder="Brand Name"
-                                    className="bg-gray-100 w-full text-sm px-4 py-3 rounded-md outline-blue-500" />
+                                    className="bg-gray-100 text-black w-full text-sm px-4 py-3 rounded-md outline-blue-500" />
                             </div>
                             <div>
                                 <label className="text-sm mb-2 block">Query Title</label>
@@ -142,7 +142,7 @@ const Update_Queries = () => {
                                     type="text"
                                     defaultValue={Query_Title}
                                     placeholder="Query Title"
-                                    className="bg-gray-100 w-full text-sm px-4 py-3 rounded-md outline-blue-500" />
+                                    className="bg-gray-100 text-black w-full text-sm px-4 py-3 rounded-md outline-blue-500" />
                             </div>
 
                             <div>
@@ -152,7 +152,7 @@ const Update_Queries = () => {
                                     type="text"
                                     defaultValue={Boycotting_Reason}
                                     placeholder="Boycotting Reason Details"
-                                    className="bg-gray-100 w-full text-sm px-4 py-3 rounded-md outline-blue-500" />
+                                    className="bg-gray-100 text-black w-full text-sm px-4 py-3 rounded-md outline-blue-500" />
                             </div>
                             <div className="!mt-5">
                                 <button type="submit" className="min-w-[150px] py-3 px-4 text-sm font-semibold rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none">

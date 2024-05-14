@@ -117,12 +117,12 @@ const Queries = () => {
                     queriesData.length > 0 ? <>
                         <div className=" font-[sans-serif] my-4 px-2">
                             <div className="max-w-7xl mx-auto">
-                                <div className={`grid ${isLayOutChange ? 'lg:grid-cols-3 md:grid-cols-3' : "lg:grid-cols-2 md:grid-cols-2"} grid-cols-1 items-center justify-center gap-5`}>
+                                <div  className={`grid ${isLayOutChange ? 'lg:grid-cols-3 md:grid-cols-3' : "lg:grid-cols-2 md:grid-cols-2"} grid-cols-1 items-center justify-center gap-5`}>
 
                                     {
-                                        queriesData.map(data =>
-                                            <>
-                                                <div className=" cursor-pointer overflow-hidden relative top-0 hover:-top-2 transition-all duration-300 p-3 shadow-2xl border rounded-md ">
+                                        queriesData.map((data,index) =>
+                                            
+                                                <div key={index} className=" cursor-pointer overflow-hidden relative top-0 hover:-top-2 transition-all duration-300 p-3 shadow-2xl border rounded-md ">
                                                     <img src={data.Product_Image} alt="Blog Post 1" className="w-full h-60 object-cover" />
                                                     <div className="p-4">
                                                         <div className="text-sm  gap-3 text-gray-400 mb-2 flex items-center">
@@ -158,7 +158,7 @@ const Queries = () => {
                                                     </Link>
 
                                                 </div>
-                                            </>
+                                        
 
                                         )
                                     }
@@ -171,10 +171,9 @@ const Queries = () => {
                             <h1 className="text-center font-bold text-3xl my-9">Not found</h1>
                         </>
                 }
-
-
-
             </div>
+
+            {/* pagination section */}
             <div className="flex justify-center gap-2 items-center my-5">
                 <button
                     onClick={() => {

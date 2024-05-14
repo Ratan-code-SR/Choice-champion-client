@@ -68,47 +68,46 @@ const View_Details = () => {
     }
 
     return (
-        <div className="font-sans bg-gray-700">
+        <div className="font-sans ">
             <div className="p-6 lg:max-w-7xl max-w-2xl max-lg:mx-auto">
                 <div className="grid items-start grid-cols-1 lg:grid-cols-5 gap-12">
                     <div className="lg:col-span-3 w-full lg:sticky top-0 text-center">
-                        <div className="bg-gray-800 px-4 py-10 rounded-xl">
+                        <div className=" px-4 py-10 rounded-xl">
                             <img src={Product_Image} alt="Product" className="w-4/5 rounded object-cover mx-auto" />
                         </div>
 
                     </div>
 
                     <div className="lg:col-span-2">
-                        <h2 className="text-3xl font-semibold text-white">Espresso Elegante | Coffee</h2>
+                        <h2 className="text-3xl font-semibold ">{Product_Name} | {Brand_Name}</h2>
 
                         <div className="flex space-x-2 mt-4">
 
-                            <h4 className="text-white text-base">Date:- {Current_Date} </h4>
-                            <h4 className="text-white text-base">Time:- {Current_Time} </h4>
+                            <h4 className=" text-base">Date:- {Current_Date} </h4>
+                            <h4 className=" text-base">Time:- {Current_Time} </h4>
                         </div>
                         {/* About the coffee */}
                         <div className="mt-8">
-                            <h3 className="text-lg font-semibold text-white">{Query_Title} </h3>
-                            <ul className="space-y-3 list-disc mt-4 pl-4 text-sm text-white">
-                                <li>A cup of coffee is a beverage essential because of its timeless appeal</li>
+                            <h3 className="text-lg font-semibold ">{Query_Title} </h3>
+                            <ul className="space-y-3 list-disc mt-4 pl-4 text-sm ">
+                                <li>{Boycotting_Reason}</li>
                                 {/* Add more list items */}
                             </ul>
                         </div>
                         <div className="mt-8">
-                            <div className="mt-8 flex items-center gap-5">
-                                <h3 className="text-lg font-semibold text-white">Recommend({recommendationCount})</h3>
-                                <Link to={`/allRecommend/${_id}`} className="text-sm p-1 flex items-center bg-yellow-300">
+                            <div className="my-8 flex items-center gap-5">
+                                <Link to={`/allRecommend/${_id}`} className="text-sm p-1 flex text-black items-center bg-yellow-300">
                                     <span>Show all recommend</span> <span><FaLongArrowAltRight /></span>
                                 </Link>
                             </div>
                             <div>
-                                <div className="flex text-white gap-2 items-center">
+                                <div className="flex  gap-2 items-center">
                                     <img className="w-10 h-10 rounded-full" src={User_Image} alt="" />
                                     <p>{User_Name}</p>
                                 </div>
                             </div>
                             {/* add recommendation in this  input */}
-                            <form onSubmit={handleRecommend} className="max-w-4xl mt-8 mx-auto bg-white shadow-[0_2px_18px_-3px_rgba(6,81,237,0.4)] sm:p-8 p-4 rounded-md">
+                            <form onSubmit={handleRecommend} className="max-w-4xl mt-8 mx-auto  shadow-[0_2px_18px_-3px_rgba(6,81,237,0.4)] sm:p-8 p-4 rounded-md">
                                 <div
                                     className="my-7 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
                                     <p
@@ -125,7 +124,7 @@ const View_Details = () => {
                                                 name="recommend_title"
                                                 type="text"
                                                 placeholder="Recommendation Title"
-                                                className="bg-gray-100 w-full text-sm px-4 py-3 rounded-md outline-blue-500" />
+                                                className=" w-full text-sm px-4 py-3 rounded-md outline-blue-500" />
                                         </div>
                                         <div>
                                             <label className="text-sm mb-2 block">Recommended product Name</label>
@@ -134,7 +133,7 @@ const View_Details = () => {
                                                 name="recommend_product"
                                                 type="text"
                                                 placeholder="Recommended product Name"
-                                                className="bg-gray-100 w-full text-sm px-4 py-3 rounded-md outline-blue-500" />
+                                                className=" w-full text-sm px-4 py-3 rounded-md outline-blue-500" />
                                         </div>
                                         <div>
                                             <label className="text-sm mb-2 block">Recommended Product Image</label>
@@ -143,7 +142,7 @@ const View_Details = () => {
                                                 name="recommend_image"
                                                 type="text"
                                                 placeholder="Recommended Product Image"
-                                                className="bg-gray-100 w-full text-sm px-4 py-3 rounded-md outline-blue-500" />
+                                                className=" w-full text-sm px-4 py-3 rounded-md outline-blue-500" />
                                         </div>
                                         <div>
                                             <label className="text-sm mb-2 block">Recommendation reason</label>
@@ -152,7 +151,7 @@ const View_Details = () => {
                                                 name="recommend_reason"
                                                 type="text"
                                                 placeholder="Recommendation reason"
-                                                className="bg-gray-100 w-full text-sm px-4 py-3 rounded-md outline-blue-500" />
+                                                className=" w-full text-sm px-4 py-3 rounded-md outline-blue-500" />
                                         </div>
 
 

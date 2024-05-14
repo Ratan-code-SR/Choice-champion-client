@@ -47,7 +47,7 @@ const Recent_Queries = () => {
             <div className="grid lg:grid-cols-2  md:grid-cols-2 grid-cols-1 items-center justify-center gap-5">
                 {
                     queriesData.slice(0, 6).map(data =>
-                        <>
+                        
                             <div key={data._id} className="grid sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 items-center shadow-[0_2px_18px_-6px_rgba(0,0,0,0.2)] w-full max-w-xl rounded-lg font-sans overflow-hidden mx-auto mt-4 border p-2 lg:h-full md:h-full h-full">
                                 <img src={data.Product_Image} className="w-full lg:h-[330px] h-[250px]" />
                                 <div className="px-4 py-6">
@@ -77,7 +77,7 @@ const Recent_Queries = () => {
 
                                 </div>
                             </div>
-                        </>
+                        
 
                     )
                 }

@@ -80,7 +80,7 @@ const My_Recommendation = () => {
                                         <tbody key={recommend._id}>
                                             <tr className="bg-base-200">
                                                 <th>{index + 1}</th>
-                                                <td><img className="w-20 h-20" src={recommend.recommend_image} alt="product image" /></td>
+                                                <td><img className="w-10 h-10" src={recommend.recommend_image} alt="product image" /></td>
                                                 <td>{recommend.product_name}</td>
                                                 <td>{recommend.recommend_title}</td>
                                                 <td>{recommend.recommend_reason.slice(0, 100)}...
