@@ -10,11 +10,6 @@ const Register = () => {
     const location = useLocation()
     const navigate = useNavigate()
 
-    useEffect(() => {
-        if (user) {
-            navigate('/')
-        }
-    }, [user, navigate])
 
     const handleSubmitCreateUser = (e) => {
         e.preventDefault()
@@ -56,7 +51,7 @@ const Register = () => {
                 toast.error(error.message)
             })
     }
-    if (user || loading) return
+
     return (
         <div className=" dark:bg-gray-900 p-5">
             <div className="flex flex-row-reverse rounded-md justify-center min-h-[calc(100vh-306px)]">

@@ -19,7 +19,7 @@ const Queries = () => {
     useEffect(() => {
         const getQueryData = async () => {
             const { data } = await axios(
-                `${import.meta.env.VITE_API_LOCAL
+                `${import.meta.env.VITE_API_URL
                 }/all-queries?page=${currentPage}&size=${itemsPages}&search=${search}`
             )
             setQueriesData(data)
@@ -29,7 +29,7 @@ const Queries = () => {
 
     useEffect(() => {
         const getCount = async () => {
-            const { data } = await axios(`${import.meta.env.VITE_API_LOCAL}/queryCount`)
+            const { data } = await axios(`${import.meta.env.VITE_API_URL}/queryCount`)
             setCount(data.count)
         }
         getCount()

@@ -10,11 +10,7 @@ const Login = () => {
     const navigate = useNavigate()
     const location = useLocation()
 
-    // useEffect(() => {
-    //     if (user) {
-    //         navigate('/')
-    //     }
-    // }, [user, navigate])
+
     const handleLoginSubmit = (e) => {
         e.preventDefault()
         const form = e.target;
@@ -47,7 +43,7 @@ const Login = () => {
                 toast.error(error.message)
             })
     }
-    // if(user || loading) return
+
     return (
         <div className=" dark:bg-gray-900 p-5">
             <div className="flex gap-5 justify-center min-h-[calc(100vh-306px)]  rounded-md">

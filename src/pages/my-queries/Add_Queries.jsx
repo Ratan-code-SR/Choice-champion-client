@@ -43,6 +43,7 @@ const Add_Queries = () => {
                 //   console.log(data.data);
                 }
             })
+            form.reset()
 
     }
 
@@ -67,6 +68,7 @@ const Add_Queries = () => {
                             <input
                                 name="Product_Image"
                                 type="text"
+                                required
                                 placeholder="Product Image"
                                 className="bg-gray-100 w-full text-sm px-4 py-3 rounded-md outline-blue-500" />
                         </div>
@@ -75,6 +77,7 @@ const Add_Queries = () => {
                             <input
                                 name="Query_Title"
                                 type="text"
+                                required
                                 placeholder="Query Title"
                                 className="bg-gray-100 w-full text-sm px-4 py-3 rounded-md outline-blue-500" />
                         </div>
@@ -83,6 +86,7 @@ const Add_Queries = () => {
                             <input
                                 name="Product_Name"
                                 type="text"
+                                required
                                 placeholder="Product Name"
                                 className="bg-gray-100 w-full text-sm px-4 py-3 rounded-md outline-blue-500" />
                         </div>
@@ -91,6 +95,7 @@ const Add_Queries = () => {
                             <input
                                 name="Brand_Name"
                                 type="text"
+                                required
                                 placeholder="Brand Name"
                                 className="bg-gray-100 w-full text-sm px-4 py-3 rounded-md outline-blue-500" />
                         </div>
@@ -99,6 +104,7 @@ const Add_Queries = () => {
                             <textarea
                                 name="Boycotting"
                                 type="text"
+                                required
                                 placeholder="Boycotting Reason Details"
                                 className="bg-gray-100 w-full text-sm px-4 py-3 rounded-md outline-blue-500" />
                         </div>
