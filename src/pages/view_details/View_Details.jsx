@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import { AuthContext } from "../../components/provider/ContextProvider";
 import axios from "axios";
@@ -18,6 +18,9 @@ const View_Details = () => {
     const day = date.getDate()
     const currentDate = `${monthName}-${day}-${year}`
     // console.log(currentDate);
+    useEffect(() => {
+        document.title = "View Details | ChoiceChampion"
+    }, [])
 
     const {
         Product_Image,
@@ -51,7 +54,7 @@ const View_Details = () => {
         const current_date = currentDate;
         const recommendInfo = { recommend_image, recommend_product, recommend_reason, recommend_title, recommend_userEmail, recommend_userName, query_id, query_title, product_name, query_userName, query_userEmail, current_date }
 
-        axios.post(`${import.meta.env.VITE_API_URL}/recommend`, recommendInfo)
+        axios.post(`${import.meta.env.VITE_API_URL}/recommend`, recommendInfo,{withCredentials:true})
             .then(data => {
                 if (data.data.insertedId) {
                     Swal.fire({

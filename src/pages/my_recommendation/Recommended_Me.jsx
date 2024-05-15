@@ -6,6 +6,12 @@ const Recommended_Me = () => {
     const [recommendedForMeData, setRecommendedForMeData] = useState([])
     const [loading, setLoading] = useState(true)
     const { user } = useContext(AuthContext)
+
+    useEffect(() => {
+        document.title = "RecommendedFor Me | ChoiceChampion"
+    }, [])
+
+
     const URL = `${import.meta.env.VITE_API_URL}/recommend`
     useEffect(() => {
         axios.get(URL)

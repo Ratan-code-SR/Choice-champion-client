@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Banner from "../banner/Banner";
 import Feature1 from "../feature/Feature1";
 import Feature2 from "../feature/Feature2";
@@ -10,6 +11,10 @@ import Testimonial from "../testimonial/Testimonial";
 
 
 const Home = () => {
+    useEffect(() => {
+        document.title = "Home | ChoiceChampion"
+    }, [])
+
     return (
         <div>
             <Slider />

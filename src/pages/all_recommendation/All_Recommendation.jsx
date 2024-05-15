@@ -7,7 +7,11 @@ const All_Recommendation = () => {
     const [recommendData, setRecommendData] = useState([])
     const [loading, setLoading] = useState(true)
     const { id } = useParams()
-    console.log(recommendData);
+    // console.log(recommendData);
+    useEffect(() => {
+        document.title = "Recommended | ChoiceChampion"
+    }, [])
+
     const URL = `${import.meta.env.VITE_API_URL}/recommend/query_id/${id}`
     useEffect(() => {
         axios.get(URL)

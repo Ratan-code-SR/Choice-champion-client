@@ -22,6 +22,10 @@ const Update_Queries = () => {
     const Current_Date = year + "-" + month + "-" + day;
     const Current_Time = hours + ":" + minutes + ":" + seconds;
 
+    useEffect(() => {
+        document.title = "Update Queries | ChoiceChampion"
+    }, [])
+
     // console.log(myAddQueries);
     const {
         Product_Image,
@@ -55,7 +59,7 @@ const Update_Queries = () => {
         const recommendationCount = 0;
         const updateInfo = { Product_Image, Query_Title, Product_Name, Brand_Name, Boycotting_Reason, User_Name, User_Image, User_Email, recommendationCount, Current_Date, Current_Time }
         // console.log(updateInfo);
-
+     
         fetch(`${import.meta.env.VITE_API_URL}/query/${_id}`, {
             method: "PUT",
             headers: {

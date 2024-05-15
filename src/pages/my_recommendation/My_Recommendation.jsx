@@ -9,6 +9,10 @@ const My_Recommendation = () => {
     const { user } = useContext(AuthContext)
     const [myRecommendedData, setMyRecommendedData] = useState([])
     const [loading, setLoading] = useState(true)
+    useEffect(() => {
+        document.title = "My Recommended | ChoiceChampion"
+    }, [])
+
 
     const URL = `${import.meta.env.VITE_API_URL}/recommend/email/${user?.email}`
     useEffect(() => {

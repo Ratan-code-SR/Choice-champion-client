@@ -12,12 +12,15 @@ import { RiLayoutGridFill } from "react-icons/ri";
 const Queries = () => {
     const [queriesData, setQueriesData] = useState([])
     const [search, setSearch] = useState('')
-    const [itemsPages, setItemsPages] = useState(5)
+    const [itemsPages, setItemsPages] = useState(6)
     const [currentPage, setCurrentPage] = useState(0)
     const [count, setCount] = useState(0)
     const [isLayOutChange, setIsLayOutChange] = useState(true)
     const { loading } = useContext(AuthContext)
 
+    useEffect(() => {
+        document.title = "Queries | ChoiceChampion"
+    }, [])
     // console.log(search);
 
     useEffect(() => {
@@ -40,8 +43,7 @@ const Queries = () => {
     }, [])
     // console.log(count)
     const numberOfPages = Math.ceil(count / itemsPages)
-    const pages = [...Array(numberOfPages).keys()].map(page => page + 1)
-
+    const pages = [...Array(numberOfPages).keys()]
 
     queriesData.sort((a, b) => {
         const [aHours, aMinutes, aSeconds] = a.Current_Time.split(':').map(Number);
@@ -177,7 +179,7 @@ const Queries = () => {
             <div className="flex justify-center gap-2 items-center my-5">
                 <button
                     onClick={() => {
-                        if (currentPage > 1) {
+                        if (currentPage > 0) {
                             setCurrentPage(currentPage - 1)
                         }
                     }}
@@ -200,7 +202,7 @@ const Queries = () => {
                 </select>
                 <button
                     onClick={() => {
-                        if (currentPage < pages.length) {
+                        if (currentPage < pages.length -1 ) {
                             setCurrentPage(currentPage + 1)
                         }
                     }}

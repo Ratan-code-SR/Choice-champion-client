@@ -10,6 +10,10 @@ const My_Queries = () => {
     const [dataLoading, setDataLoading] = useState(true)
     const { user } = useContext(AuthContext)
 
+    useEffect(() => {
+        document.title = "My Queries | ChoiceChampion"
+    }, [])
+
     const url = `/query/${user?.email}`
     useEffect(() => {
         if (user) {

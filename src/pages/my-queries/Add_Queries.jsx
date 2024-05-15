@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../components/provider/ContextProvider";
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
@@ -18,6 +18,9 @@ const Add_Queries = () => {
     const Current_Date = year + "-" + month + "-" + day;
     const Current_Time = hours + ":" + minutes + ":" + seconds;
 
+    useEffect(() => {
+        document.title = "Add Query | ChoiceChampion"
+    }, [])
     const handleFormSubmit = e => {
         e.preventDefault()
         const form = e.target;
