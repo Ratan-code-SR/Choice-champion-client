@@ -4,6 +4,7 @@ import axios from "axios";
 import { MdDelete } from "react-icons/md";
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
+import { Bars } from "react-loader-spinner";
 
 const My_Recommendation = () => {
     const { user } = useContext(AuthContext)
@@ -55,9 +56,21 @@ const My_Recommendation = () => {
             }
         });
     }
-
     if (loading) {
-        return <div className="w-16 my-20 mx-auto h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <Bars
+                    height="80"
+                    width="80"
+                    color="#4fa94d"
+                    ariaLabel="bars-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    visible={true}
+                />
+            </div>
+        );
+
     }
     // console.log(myRecommendedData);
     return (

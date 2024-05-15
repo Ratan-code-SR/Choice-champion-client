@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../components/provider/ContextProvider";
+import { Bars } from "react-loader-spinner";
 
 const Recommended_Me = () => {
     const [recommendedForMeData, setRecommendedForMeData] = useState([])
@@ -24,7 +25,20 @@ const Recommended_Me = () => {
 
     const recommendsMe = recommendedForMeData.filter(me => me.query_userEmail === user?.email)
     if (loading) {
-        return <div className="w-16 my-20 mx-auto h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <Bars
+                    height="80"
+                    width="80"
+                    color="#4fa94d"
+                    ariaLabel="bars-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    visible={true}
+                />
+            </div>
+        );
+
     }
     return (
         <div>

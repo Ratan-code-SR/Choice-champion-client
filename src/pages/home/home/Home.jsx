@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import Banner from "../banner/Banner";
 import Feature1 from "../feature/Feature1";
 import Feature2 from "../feature/Feature2";
@@ -10,13 +10,33 @@ import Slider from "../slider/Slider";
 import Testimonial from "../testimonial/Testimonial";
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
+import { AuthContext } from "../../../components/provider/ContextProvider";
+import { Bars } from "react-loader-spinner";
 // ..
 AOS.init();
 
 const Home = () => {
+    const {loading} = useContext(AuthContext)
     useEffect(() => {
         document.title = "Home | ChoiceChampion"
     }, [])
+
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <Bars
+                    height="80"
+                    width="80"
+                    color="#4fa94d"
+                    ariaLabel="bars-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    visible={true}
+                />
+            </div>
+        );
+
+    }
 
     return (
         <div>

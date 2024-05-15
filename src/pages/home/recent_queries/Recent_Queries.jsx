@@ -1,12 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import axios from "axios";
-import { AuthContext } from "../../../components/provider/ContextProvider";
 import { Link } from "react-router-dom";
 
 
 const Recent_Queries = () => {
     const [queriesData, setQueriesData] = useState([])
-    const { loading } = useContext(AuthContext)
     const URL = `${import.meta.env.VITE_API_URL}/query`
     // console.log(URL);
     useEffect(() => {
@@ -16,10 +14,6 @@ const Recent_Queries = () => {
             })
 
     }, [URL])
-
-    if (loading) {
-        return <div className="w-16 my-20 mx-auto h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
-    }
 
     queriesData.sort((a, b) => {
         const dateCompare = new Date(b.Current_Date) - new Date(a.Current_Date)

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../components/provider/ContextProvider";
 import My_Query from "./My_Query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { Bars } from "react-loader-spinner";
 
 const My_Queries = () => {
     const [queriesData, setQueriesData] = useState([])
@@ -26,9 +27,25 @@ const My_Queries = () => {
         }
 
     }, [url, axiosSecure])
+
+    
     if (dataLoading) {
-        return <div className="w-16 my-56 mx-auto h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+        return (
+           <div className="flex justify-center items-center h-screen">
+             <Bars
+                height="80"
+                width="80"
+                color="#4fa94d"
+                ariaLabel="bars-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+                />
+           </div>
+        );
+
     }
+
 
     queriesData.sort((a, b) => {
         const dateCompare = new Date(b.Current_Date) - new Date(a.Current_Date)

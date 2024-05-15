@@ -8,10 +8,12 @@ import { GrLinkPrevious } from "react-icons/gr";
 import { TfiLayoutGrid3Alt } from "react-icons/tfi";
 import { RiLayoutGridFill } from "react-icons/ri";
 
+import { Bars } from 'react-loader-spinner'
 
 const Queries = () => {
     const [queriesData, setQueriesData] = useState([])
     const [search, setSearch] = useState('')
+    const [dataLoading, setDataLoading] = useState(true)
     const [itemsPages, setItemsPages] = useState(6)
     const [currentPage, setCurrentPage] = useState(0)
     const [count, setCount] = useState(0)
@@ -30,6 +32,7 @@ const Queries = () => {
                 }/all-queries?page=${currentPage}&size=${itemsPages}&search=${search}`
             )
             setQueriesData(data.reverse())
+            setDataLoading(false)
         }
         getQueryData()
     }, [currentPage, itemsPages, search])
@@ -45,8 +48,39 @@ const Queries = () => {
     const numberOfPages = Math.ceil(count / itemsPages)
     const pages = [...Array(numberOfPages).keys()]
 
+    if (dataLoading) {
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <Bars
+                    height="80"
+                    width="80"
+                    color="#4fa94d"
+                    ariaLabel="bars-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    visible={true}
+                />
+            </div>
+        );
+
+    }
+
+
     if (loading) {
-        return <div className="w-16 my-20 mx-auto h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <Bars
+                    height="80"
+                    width="80"
+                    color="#4fa94d"
+                    ariaLabel="bars-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    visible={true}
+                />
+            </div>
+        );
+
     }
     const handleSearchByProductName = e => {
         e.preventDefault()
@@ -67,7 +101,7 @@ const Queries = () => {
         setIsLayOutChange(true)
     }
 
- 
+
 
     return (
         <div>
@@ -107,50 +141,50 @@ const Queries = () => {
                     queriesData.length > 0 ? <>
                         <div className=" font-[sans-serif] my-4 px-2">
                             <div className="max-w-7xl mx-auto">
-                                <div  className={`grid ${isLayOutChange ? 'lg:grid-cols-3 md:grid-cols-3' : "lg:grid-cols-2 md:grid-cols-2"} grid-cols-1 items-center justify-center gap-5`}>
+                                <div className={`grid ${isLayOutChange ? 'lg:grid-cols-3 md:grid-cols-3' : "lg:grid-cols-2 md:grid-cols-2"} grid-cols-1 items-center justify-center gap-5`}>
 
                                     {
-                                        queriesData.map((data,index) =>
-                                            
-                                                <div key={index} className=" cursor-pointer overflow-hidden relative top-0 hover:-top-2 transition-all duration-300 p-3 shadow-2xl border rounded-md ">
-                                                    <img src={data.Product_Image} alt="Blog Post 1" className="w-full h-60 object-cover" />
-                                                    <div className="p-4">
-                                                        <div className="text-sm  gap-3 text-gray-400 mb-2 flex items-center">
-                                                            <img src={data.User_Image} className="w-9 h-9 rounded-full" />
-                                                            <span>{data.User_Name}</span>
-                                                            |
-                                                            <span>{data.Current_Date}</span>
-                                                            
-                                                            <span>{data.Current_Time}</span>
-                                                        </div>
+                                        queriesData.map((data, index) =>
 
-                                                        <h3 className="text-md font-bold text-[#10b981] ">Product Name: {data.Product_Name}</h3>
-                                                        <h3 className="text-md font-bold text-[#a91079]">Brand : {data.Brand_Name}</h3>
-                                                        <h3 className="text-md font-semibold text-[#22c55e]">Recommended ( {data.recommendationCount} ) </h3>
-                                                        <h3 className="text-sm font-semibold ">{data.Query_Title}</h3>
-                                                        <hr className="" />
-                                                        <p title={data.Boycotting_Reason} className="text-gray-400 text-sm">
-                                                            {
-                                                                isLayOutChange === true ? <>
-                                                                    {data.Boycotting_Reason.length < 150 ? <>{data.Boycotting_Reason}</> :
-                                                                        <>{data.Boycotting_Reason.slice(0, 80)}...</>}
-                                                                </> : <>
-                                                                    {data.Boycotting_Reason.slice(0, 150)}
-                                                                </>
-                                                            }
+                                            <div key={index} className=" cursor-pointer overflow-hidden relative top-0 hover:-top-2 transition-all duration-300 p-3 shadow-2xl border rounded-md ">
+                                                <img src={data.Product_Image} alt="Blog Post 1" className="w-full h-60 object-cover" />
+                                                <div className="p-4">
+                                                    <div className="text-sm  gap-3 text-gray-400 mb-2 flex items-center">
+                                                        <img src={data.User_Image} className="w-9 h-9 rounded-full" />
+                                                        <span>{data.User_Name}</span>
+                                                        |
+                                                        <span>{data.Current_Date}</span>
 
-
-                                                        </p>
+                                                        <span>{data.Current_Time}</span>
                                                     </div>
-                                                    <Link to={`/viewDetails/${data._id}`}>
-                                                        <button className="inline-flex mt-3 items-center justify-center w-full px-4 py-2 mb-2 text-lg text-white bg-green-500 rounded-md hover:bg-green-400 sm:w-auto sm:mb-0" data-primary="green-400" data-rounded="rounded-2xl" data-primary-reset="{}">
-                                                            Recommend Now
-                                                            <svg className="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
-                                                        </button>
-                                                    </Link>
 
+                                                    <h3 className="text-md font-bold text-[#10b981] ">Product Name: {data.Product_Name}</h3>
+                                                    <h3 className="text-md font-bold text-[#a91079]">Brand : {data.Brand_Name}</h3>
+                                                    <h3 className="text-md font-semibold text-[#22c55e]">Recommended ( {data.recommendationCount} ) </h3>
+                                                    <h3 className="text-sm font-semibold ">{data.Query_Title}</h3>
+                                                    <hr className="" />
+                                                    <p title={data.Boycotting_Reason} className="text-gray-400 text-sm">
+                                                        {
+                                                            isLayOutChange === true ? <>
+                                                                {data.Boycotting_Reason.length < 150 ? <>{data.Boycotting_Reason}</> :
+                                                                    <>{data.Boycotting_Reason.slice(0, 80)}...</>}
+                                                            </> : <>
+                                                                {data.Boycotting_Reason.slice(0, 150)}
+                                                            </>
+                                                        }
+
+
+                                                    </p>
                                                 </div>
-                                        
+                                                <Link to={`/viewDetails/${data._id}`}>
+                                                    <button className="inline-flex mt-3 items-center justify-center w-full px-4 py-2 mb-2 text-lg text-white bg-green-500 rounded-md hover:bg-green-400 sm:w-auto sm:mb-0" data-primary="green-400" data-rounded="rounded-2xl" data-primary-reset="{}">
+                                                        Recommend Now
+                                                        <svg className="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                                                    </button>
+                                                </Link>
+
+                                            </div>
+
 
                                         )
                                     }
@@ -192,7 +226,7 @@ const Queries = () => {
                 </select>
                 <button
                     onClick={() => {
-                        if (currentPage < pages.length -1 ) {
+                        if (currentPage < pages.length - 1) {
                             setCurrentPage(currentPage + 1)
                         }
                     }}
