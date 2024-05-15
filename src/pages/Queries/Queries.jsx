@@ -7,18 +7,17 @@ import { GrLinkNext } from "react-icons/gr";
 import { GrLinkPrevious } from "react-icons/gr";
 import { TfiLayoutGrid3Alt } from "react-icons/tfi";
 import { RiLayoutGridFill } from "react-icons/ri";
-
 import { Bars } from 'react-loader-spinner'
 
 const Queries = () => {
     const [queriesData, setQueriesData] = useState([])
     const [search, setSearch] = useState('')
-    const [dataLoading, setDataLoading] = useState(true)
     const [itemsPages, setItemsPages] = useState(6)
     const [currentPage, setCurrentPage] = useState(0)
     const [count, setCount] = useState(0)
     const [isLayOutChange, setIsLayOutChange] = useState(true)
     const { loading } = useContext(AuthContext)
+
 
     useEffect(() => {
         document.title = "Queries | ChoiceChampion"
@@ -32,7 +31,7 @@ const Queries = () => {
                 }/all-queries?page=${currentPage}&size=${itemsPages}&search=${search}`
             )
             setQueriesData(data.reverse())
-            setDataLoading(false)
+       
         }
         getQueryData()
     }, [currentPage, itemsPages, search])
@@ -47,23 +46,6 @@ const Queries = () => {
 
     const numberOfPages = Math.ceil(count / itemsPages)
     const pages = [...Array(numberOfPages).keys()]
-
-    if (dataLoading) {
-        return (
-            <div className="flex justify-center items-center h-screen">
-                <Bars
-                    height="80"
-                    width="80"
-                    color="#4fa94d"
-                    ariaLabel="bars-loading"
-                    wrapperStyle={{}}
-                    wrapperClass=""
-                    visible={true}
-                />
-            </div>
-        );
-
-    }
 
 
     if (loading) {
@@ -121,7 +103,7 @@ const Queries = () => {
                 </div>
             </div>
 
-            <div className="my-5 md:block hidden">
+            <div className="my-5  ">
                 <div className="flex ml-5 ">
                     <button className={`btn mr-5 ${isLayOutChange === false ? "bg-green-400" : ""}`} onClick={handleGridLayOutChange2}> <RiLayoutGridFill /> </button>
                     <button className={`btn mr-5  ${isLayOutChange === true ? "bg-green-400" : ""} `} onClick={handleGridLayOutChange3}>< TfiLayoutGrid3Alt /></button>
