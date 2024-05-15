@@ -14,6 +14,7 @@ Click here for see my website:
  I have implemented this NPM Packages :
 - [React-Hot-Toast](https://react-hot-toast.com/)
 - [React-Router](https://reactrouter.com/en/main)
+- [react-loader-spinner](https://mhnpd.github.io/react-loader-spinner/docs/intro)
 - [Prop-Types](https://www.npmjs.com/package/prop-types)
 - [React-Icons](https://react-icons.github.io/react-icons/)
 - [React-Aos-package](https://michalsnik.github.io/aos/)

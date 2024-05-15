@@ -46,6 +46,8 @@ const My_Queries = () => {
         return dateCompare
 
     })
+    // console.log(queriesData.reverse());
+  
     return (
         <div className="p-2">
             <div className="relative z-0 font-[sans-serif] before:absolute before:w-full before:h-full before:inset-0 before:bg-black before:opacity-50 before:z-10">

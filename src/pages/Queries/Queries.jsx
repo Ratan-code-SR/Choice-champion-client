@@ -29,7 +29,7 @@ const Queries = () => {
                 `${import.meta.env.VITE_API_URL
                 }/all-queries?page=${currentPage}&size=${itemsPages}&search=${search}`
             )
-            setQueriesData(data)
+            setQueriesData(data.reverse())
         }
         getQueryData()
     }, [currentPage, itemsPages, search])
@@ -41,21 +41,9 @@ const Queries = () => {
         }
         getCount()
     }, [])
-    // console.log(count)
+
     const numberOfPages = Math.ceil(count / itemsPages)
     const pages = [...Array(numberOfPages).keys()]
-
-    queriesData.sort((a, b) => {
-        const [aHours, aMinutes, aSeconds] = a.Current_Time.split(':').map(Number);
-        const [bHours, bMinutes, bSeconds] = b.Current_Time.split(':').map(Number);
-        if (aHours !== bHours) {
-            return bHours - aHours;
-        } else if (aMinutes !== bMinutes) {
-            return bMinutes - aMinutes;
-        } else {
-            return bSeconds - aSeconds;
-        }
-    })
 
     if (loading) {
         return <div className="w-16 my-20 mx-auto h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
@@ -79,7 +67,7 @@ const Queries = () => {
         setIsLayOutChange(true)
     }
 
-
+ 
 
     return (
         <div>
@@ -99,7 +87,7 @@ const Queries = () => {
                 </div>
             </div>
 
-            <div className="my-5">
+            <div className="my-5 md:block hidden">
                 <div className="flex ml-5 ">
                     <button className={`btn mr-5 ${isLayOutChange === false ? "bg-green-400" : ""}`} onClick={handleGridLayOutChange2}> <RiLayoutGridFill /> </button>
                     <button className={`btn mr-5  ${isLayOutChange === true ? "bg-green-400" : ""} `} onClick={handleGridLayOutChange3}>< TfiLayoutGrid3Alt /></button>
@@ -132,6 +120,8 @@ const Queries = () => {
                                                             <span>{data.User_Name}</span>
                                                             |
                                                             <span>{data.Current_Date}</span>
+                                                            
+                                                            <span>{data.Current_Time}</span>
                                                         </div>
 
                                                         <h3 className="text-md font-bold text-[#10b981] ">Product Name: {data.Product_Name}</h3>

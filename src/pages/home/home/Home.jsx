@@ -8,7 +8,10 @@ import News_Letter from "../news_letter/News_Letter";
 import Recent_Queries from "../recent_queries/Recent_Queries";
 import Slider from "../slider/Slider";
 import Testimonial from "../testimonial/Testimonial";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
+// ..
+AOS.init();
 
 const Home = () => {
     useEffect(() => {
@@ -40,7 +43,11 @@ const Home = () => {
             </div>
             <div className="">
                 <div className="mb-5 text-center py-2">
-                    <h2 className="text-3xl font-extrabold text-emerald-500">What our happy client say</h2>
+                    <h2 className="text-3xl font-extrabold text-emerald-500"
+                  data-aos="flip-left"
+                  data-aos-easing="ease-out-cubic"
+                  data-aos-duration="2000"
+                    >What our happy client say</h2>
                 </div>
                 <Testimonial />
             </div>
