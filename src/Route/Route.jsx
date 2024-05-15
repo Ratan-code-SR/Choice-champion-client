@@ -16,6 +16,10 @@ import Update_Queries from '../pages/my-queries/Update_Queries.jsx';
 
 const router = createBrowserRouter([
     {
+        path: '*',
+        element: <ErrorPage />,
+    },
+    {
         path: "/",
         element: <Main />,
         errorElement: <ErrorPage />,
@@ -56,7 +60,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/update/:id",
-                element: <Update_Queries/>,
+                element: <Update_Queries />,
                 loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/query/id/${params.id}`)
             },
             {
