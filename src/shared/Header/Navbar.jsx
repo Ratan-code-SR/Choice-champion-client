@@ -23,18 +23,11 @@ const Navbar = () => {
     const navLink = <>
         <li><NavLink to='/'>Home </NavLink></li>
         <li><NavLink to='/queries'>Queries </NavLink></li>
-        {
-            user ? <>
-                <li><NavLink to='/recommended_me'>RecommendationsFor Me</NavLink></li>
-                <li><NavLink to='/my_queries'>My Queries</NavLink></li>
-                <li><NavLink to='/my_recommendation'>My recommendations</NavLink></li>
-            </> :
-                <></>
-        }
     </>
     const handleLogout = () => {
         logOutUser()
             .then(result => {
+                console.log(result);
                 toast.success('Logout successful!')
                 navigate("/login")
 
@@ -84,6 +77,7 @@ const Navbar = () => {
                             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
 
                                 <li><a>{user.displayName}</a></li>
+                                <li>  <Link to='dashboard/my_queries'>Dashboard</Link></li>
                                 <button onClick={handleLogout} > <li><a>Logout</a></li></button>
                             </ul>
                         </div>

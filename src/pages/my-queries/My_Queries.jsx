@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { AuthContext } from "../../components/provider/ContextProvider";
 import My_Query from "./My_Query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
@@ -72,10 +71,6 @@ const My_Queries = () => {
                 <div className="min-h-[300px] relative z-50 h-full max-w-6xl mx-auto flex flex-col justify-center items-center text-center text-white p-6">
                     <h1 className="text-4xl font-bold">Explore Queries</h1>
                     <p className="mt-4  text-xl mb-5">Discover alternative products and recommendations from our community.</p>
-                    <Link to="/add_queries"
-                        className="mt-8 bg-transparent text-white text-base font-semibold py-2.5 px-6 border-2 border-white rounded hover:bg-white hover:text-black transition duration-300 ease-in-out">
-                        Add Query
-                    </Link>
                 </div>
             </div>
             {/* My Queries */}
@@ -94,11 +89,7 @@ const My_Queries = () => {
                         <div className="text-center flex-col my-10 flex justify-center items-center">
                             <h1 className="text-center">You don't add query</h1>
                             <p>If you add any query please click add query button</p>
-                            <div className="!mt-5">
-                                <Link to='/add_queries' className="min-w-[150px] py-3 px-4 text-sm font-semibold rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none">
-                                    Add Query
-                                </Link>
-                            </div>
+                            
 
                         </div>
                 }

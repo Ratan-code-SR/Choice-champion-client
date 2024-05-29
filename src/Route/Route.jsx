@@ -13,6 +13,7 @@ import My_Recommendation from '../pages/my_recommendation/My_Recommendation.jsx'
 import Recommended_Me from '../pages/my_recommendation/Recommended_Me.jsx';
 import PrivateRoute from './PrivateRoute.jsx';
 import Update_Queries from '../pages/my-queries/Update_Queries.jsx';
+import Dashboard from '../pages/dashboard/Dashboard.jsx';
 
 const router = createBrowserRouter([
     {
@@ -36,18 +37,9 @@ const router = createBrowserRouter([
                 path: "/register",
                 element: <Register />
             },
-            {
-                path: '/my_queries',
-                element: <PrivateRoute><My_Queries /></PrivateRoute>
-            },
-            {
-                path: '/add_queries',
-                element: <PrivateRoute> <Add_Queries /></PrivateRoute>
-            },
-            {
-                path: "/my_recommendation",
-                element: <My_Recommendation />
-            },
+           
+          
+          
             {
                 path: "/queries",
                 element: <Queries />,
@@ -68,11 +60,29 @@ const router = createBrowserRouter([
                 element: <All_Recommendation />,
 
             },
-            {
-                path: "/recommended_me",
-                element: <Recommended_Me />
-            }
 
+            {
+                path: "dashboard",
+                element: <Dashboard/>,
+                children: [
+                    {
+                        path: '/dashboard/my_queries',
+                        element: <PrivateRoute><My_Queries /></PrivateRoute>
+                    },
+                    {
+                        path: "dashboard/my_recommendation",
+                        element: <My_Recommendation />
+                    },
+                    {
+                        path: "dashboard/recommended_me",
+                        element: <Recommended_Me />
+                    },
+                    {
+                        path: 'dashboard/add_queries',
+                        element: <PrivateRoute> <Add_Queries /></PrivateRoute>
+                    },
+                ]
+            }
         ],
     },
 ]);
