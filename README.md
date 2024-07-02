@@ -7,7 +7,7 @@ This project involves creating a dynamic web application with a header, footer, 
 3. Enhanced User Experience
 
 Live Link:   
-- [ChoiceChampion](https://choicechampion-d3308.web.app/)
+- [ChoiceChampion](https://choicechampion.netlify.app/)
 
 ### Project Setup Instructions:
 
