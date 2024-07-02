@@ -10,30 +10,30 @@ Live Link:
 - [choicechampion](https://choicechampion-d3308.web.app/)
 
 Project Setup Instructions:
-1: Clone the Repository:
+1. Clone the Repository:
 bash
 git clone https://github.com/Ratan-code-SR/Choice-champion-client.git
 cd your-project
 
-2: Install Dependencies:
+2. Install Dependencies:
 npm install
 
-2: Set Up Environment Variables:
+3. Set Up Environment Variables:
 Create a .env file in the root directory.
 Add the following variables:
-VITE_apiKey
-VITE_authDomain
-VITE_projectId
-VITE_storageBucket
-VITE_messagingSenderId
-VITE_appId
-VITE_imgBB_add_api_key
-VITE_payment_key
+1. VITE_apiKey
+2. VITE_authDomain
+3. VITE_projectId
+4. VITE_storageBucket
+5. VITE_messagingSenderId
+6. VITE_appId
+7. VITE_imgBB_add_api_key
+8. VITE_payment_key
 
-3: Start the Development Server:
+4. Start the Development Server:
 npm start
 
-4: Build for Production (Optional):
+5. Build for Production (Optional):
 npm run build
 
  In my project, I have implemented which packages.
@@ -61,5 +61,6 @@ npm run build
 
  Database:
 - [MongoDB Atlas ](https://www.mongodb.com/atlas/database)
+
 
 
