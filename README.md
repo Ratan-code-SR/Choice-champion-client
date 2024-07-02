@@ -11,8 +11,9 @@ Live Link:
 
 Project Setup Instructions:
 1. Clone the Repository:
-bash
+
 git clone https://github.com/Ratan-code-SR/Choice-champion-client.git
+
 cd your-project
 
 2. Install Dependencies:
@@ -21,14 +22,14 @@ npm install
 3. Set Up Environment Variables:
 Create a .env file in the root directory.
 Add the following variables:
-1. VITE_apiKey
-2. VITE_authDomain
-3. VITE_projectId
-4. VITE_storageBucket
-5. VITE_messagingSenderId
-6. VITE_appId
-7. VITE_imgBB_add_api_key
-8. VITE_payment_key
+VITE_apiKey,
+VITE_authDomain,
+VITE_projectId,
+VITE_storageBucket,
+VITE_messagingSenderId,
+VITE_appId,
+VITE_imgBB_add_api_key,
+VITE_payment_key,
 
 4. Start the Development Server:
 npm start
@@ -61,6 +62,7 @@ npm run build
 
  Database:
 - [MongoDB Atlas ](https://www.mongodb.com/atlas/database)
+
 
 
 
