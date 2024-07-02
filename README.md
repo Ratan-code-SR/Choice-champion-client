@@ -11,28 +11,28 @@ Live Link:
 
 ### Project Setup Instructions:
 
-Clone the Repository:
+1. Clone the Repository:
 git clone https://github.com/Ratan-code-SR/Choice-champion-client.git
 
 cd your-project
 
-Install Dependencies: npm install
+2. Install Dependencies: npm install
 
 3. Set Up Environment Variables:
 Create a .env file in the root directory.
 Add the following variables:
-VITE_apiKey,
-VITE_authDomain,
-VITE_projectId,
-VITE_storageBucket,
-VITE_messagingSenderId,
-VITE_appId,
+apiKey,
+authDomain,
+projectId,
+storageBucket,
+messagingSenderId,
+appId,
 VITE_API_URL=https://choice-champion-server.vercel.app,
 VITE_API_LOCAL=http://localhost:5000,
 
-Start the Development Server: npm start
+4. Clone this repository and Start the Development Server: (https://github.com/Ratan-code-SR/Choice-champion-server)
 
-Build for Production (Optional): npm run build
+5. Build for Production (Optional): npm run build
 
  In my project, I have implemented which packages.
  Css FrameWork :
